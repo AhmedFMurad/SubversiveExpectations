@@ -38,8 +38,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project/TLDR/app/src/main/java/com/a3004/tldr/tldr/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+            <state relative-caret-position="165">
+              <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -373,7 +373,14 @@
       <option name="project" value="LOCAL" />
       <updated>1507153945936</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added a comment">
+      <created>1507154055684</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1507154055684</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -416,7 +423,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="changed&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed&#10;" />
+    <MESSAGE value="added a comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a comment" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -442,8 +450,8 @@
     <entry file="file://$PROJECT_DIR$/inspection/Default.xml" />
     <entry file="file://$PROJECT_DIR$/project/TLDR/app/src/main/java/com/a3004/tldr/tldr/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        <state relative-caret-position="165">
+          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
           <folding />
         </state>
       </provider>
