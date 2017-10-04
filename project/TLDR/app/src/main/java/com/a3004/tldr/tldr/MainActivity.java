@@ -16,5 +16,6 @@ public class MainActivity extends AppCompatActivity {
         //TextView hello = (TextView) findViewById(R.id.text);
         // this is a comment
         //this is another comment
+        //It's another comment right here
     }
 }
