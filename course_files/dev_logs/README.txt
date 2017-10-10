@@ -1,0 +1,1 @@
+This folder is used by contributors to report on their development progress on a weekly basis
