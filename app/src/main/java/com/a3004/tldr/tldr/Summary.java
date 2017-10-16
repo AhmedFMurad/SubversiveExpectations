@@ -1,9 +1,10 @@
 package com.a3004.tldr.tldr;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Summary {
-    protected int upVotes;
-    protected int downVotes;
-    protected int trollVotes;
+    protected Map<String, Integer> vote;
     protected int articleID;
 }
