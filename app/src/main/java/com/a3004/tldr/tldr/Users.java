@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class Users {
     protected String username;
+    protected int id;
     protected String[] preferedCategories;
     protected Date lastLogin;
     protected int amountOfCategories;
