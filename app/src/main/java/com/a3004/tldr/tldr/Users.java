@@ -32,6 +32,7 @@ public class Users {
             this.preferedCategories[i] = this.preferedCategories[i+1];
         }
         this.amountOfCategories--;
+        this.preferedCategories[this.amountOfCategories] = null;
     }
 
 
