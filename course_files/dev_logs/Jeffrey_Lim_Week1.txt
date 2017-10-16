@@ -1,8 +1,0 @@
-Week 1
-Jeffrey Lim
-100909519
-COMP 3004 Project
-
-- Looked up some design patterns for the news app
-- developed some mock up drawings, will upload later of the UI design
-- discussed with group what functional requirements are needed
