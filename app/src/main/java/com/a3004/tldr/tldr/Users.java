@@ -4,8 +4,6 @@ package com.a3004.tldr.tldr;
 import java.util.Arrays;
 import java.util.Date;
 
-import static java.util.Arrays.asList;
-
 public class Users {
     protected String username;
     protected String[] preferedCategories;
@@ -34,6 +32,7 @@ public class Users {
         this.amountOfCategories--;
         this.preferedCategories[this.amountOfCategories] = null;
     }
+
 
 
 }

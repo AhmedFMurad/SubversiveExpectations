@@ -35,7 +35,7 @@ public class Accounts extends Users {
         // Check database for username in if statement below
         if(true){
             // Get user's password from the database
-            if(md5(password) == this.password){
+            if(md5(password).equals(this.password)){
                 return true;
             } else {
                 return false;
