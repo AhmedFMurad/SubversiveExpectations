@@ -5,8 +5,6 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
     Website nyTimes = new Website("NY Times");
-    Website techCrunch = new Website("TechCrunch");
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
