@@ -30,7 +30,6 @@
             android:paddingVertical="16dp"
             android:scrollbars="horizontal">
 
-
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
