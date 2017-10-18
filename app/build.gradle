@@ -28,7 +28,14 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:cardview-v7:26.+'
-
     // recycler view
     compile 'com.android.support:recyclerview-v7:26.+'
+    //azure database
+    compile 'com.microsoft.azure:azure-mobile-android:3.3.0@aar'
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
 }
