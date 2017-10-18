@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import com.microsoft.windowsazure.mobileservices.*;
 public class MainActivity extends AppCompatActivity {
-
+    private MobileServiceClient mClient;
     // added here
     private RecyclerView mRecylerView;
     private List<Article> articles;
@@ -31,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
 
         initData();
         initAdapter();
+
+        try{
+            mClient = new MobileServiceClient(
+                    "https://tldrapp.azurewebsites.net",
+                    this
+            );
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 
