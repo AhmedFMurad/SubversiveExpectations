@@ -1,6 +1,5 @@
 package com.a3004.tldr.tldr;
 
-import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,30 +16,29 @@ public class MainActivity extends AppCompatActivity {
 
     // added here
     private RecyclerView mRecylerView;
-    private List<String> mDatas;
-    private RecyclerViewAdapter mAdapter;
+    private List<Article> articles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler);
+        setContentView(R.layout.recycler_view);
 
         // added stuff from here
-        initData();
-
         mRecylerView = (RecyclerView) findViewById(R.id.recycler_view);
+
         mRecylerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecylerView.setAdapter(mAdapter = new RecyclerViewAdapter());
+
+
+        initData();
+        initAdapter();
+
     }
 
-    protected void initData() {
-        mDatas = new ArrayList<String>();
-        for(int i = 'A'; i < 'z'; i++) {
-            mDatas.add("" + (char) i);
-        }
+    private void initData() {
+        articles = new ArrayList<>();
     }
 
-    class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>
+    public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>
     {
 
         @Override
@@ -60,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             return mDatas.size();
         }
 
-        class MyViewHolder extends RecyclerView.ViewHolder {
+        public class MyViewHolder extends RecyclerView.ViewHolder {
             TextView mTextView;
 
             public MyViewHolder(View view) {
@@ -69,5 +67,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
 }

@@ -2,12 +2,12 @@ package com.a3004.tldr.tldr;
 
 
 public class Article {
-    protected String articleText;
-    protected String articleImage;
-    protected String articleURL;
-    protected String articleCategory;
-    protected int articleID;
-    protected Summary[] summariesArray;
+    private String articleText;
+    private String articleImage;
+    private String articleURL;
+    private String articleCategory;
+    private int articleID;
+    private Summary[] summariesArray;
 
     public Summary[] getAllSummaries(){
         return this.summariesArray;
