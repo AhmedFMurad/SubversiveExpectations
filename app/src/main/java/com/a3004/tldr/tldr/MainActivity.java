@@ -48,6 +48,14 @@ public class MainActivity extends AppCompatActivity {
         // need to link to a website
         articles.add(new Article("", "Breaking News", R.drawable.pepe1));
         articles.add(new Article("", "Breaking News AGAIN", R.drawable.pepe2));
+        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
+        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
+        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
+        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
+        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
+        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
+        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
+
     }
 
     private void initAdapter() {
