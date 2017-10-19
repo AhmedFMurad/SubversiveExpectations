@@ -28,7 +28,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    List<Article> articles;
+    private List<Article> articles;
 
     RecyclerViewAdapter(List<Article> articles) {
         this.articles = articles;
@@ -42,7 +42,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public mViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).
-                inflate(R.layout.item_home, viewGroup, false);
+                inflate(R.layout.item, viewGroup, false);
         mViewHolder mvh = new mViewHolder(view);
         return mvh;
     }
@@ -55,7 +55,5 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public int getItemCount() {
-        return articles.size();
-    }
+    public int getItemCount() { return articles.size(); }
 }
