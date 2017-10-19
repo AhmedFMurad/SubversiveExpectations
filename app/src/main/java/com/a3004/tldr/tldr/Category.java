@@ -40,6 +40,7 @@ public class Category {
                 if (eventType == XmlPullParser.START_DOCUMENT){
 
                 } else if (eventType == XmlPullParser.START_TAG){
+                    Article article;
                     if (parser.getName().equals("item")){
 
                     }
