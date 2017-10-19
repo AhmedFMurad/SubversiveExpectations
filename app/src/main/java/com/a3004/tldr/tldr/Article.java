@@ -27,4 +27,18 @@ public class Article {
     public Summary[] getAllSummaries(){
         return this.summariesArray;
     }
+
+    public void setArticleText(String text){
+        articleText = text;
+    }
+
+    public void setArticleImage(String text){
+        articleImage = text;
+    }
+
+    public void setArticleURL(String text){
+        articleURL = text;
+    }
+
+
 }
