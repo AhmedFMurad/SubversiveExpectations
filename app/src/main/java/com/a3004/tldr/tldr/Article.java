@@ -24,10 +24,6 @@ public class Article {
         this.articleID = articleID;
     }
 
-    public Summary[] getAllSummaries(){
-        return this.summariesArray;
-    }
-
     public void setArticleText(String text){
         articleText = text;
     }
@@ -38,6 +34,16 @@ public class Article {
 
     public void setArticleURL(String text){
         articleURL = text;
+    }
+
+    //getters
+    public String getArticleText(){return articleText;}
+    public String getArticleURL(){return articleURL;}
+    public String getArticleImage(){return articleImage;}
+    public String getArticleCategory(){return articleCategory;}
+    public int getArticleID(){return articleID;}
+    public Summary[] getAllSummaries(){
+        return this.summariesArray;
     }
 
 
