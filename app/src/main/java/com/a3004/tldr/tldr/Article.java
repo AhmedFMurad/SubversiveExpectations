@@ -2,12 +2,12 @@ package com.a3004.tldr.tldr;
 
 
 public class Article {
-    String articleText;
-    String articleImage;
-    String articleURL;
-    String articleCategory;
-    int articleID;
-    Summary[] summariesArray;
+    private String articleText;
+    private String articleImage;
+    private String articleURL;
+    private String articleCategory;
+    private int articleID;
+    private Summary[] summariesArray;
 
     public Article(String articleText, String articleImage, String articleURL,
                    String articleCategory, int articleID) {
@@ -37,11 +37,11 @@ public class Article {
     }
 
     //getters
-    public String getArticleText(){return articleText;}
-    public String getArticleURL(){return articleURL;}
-    public String getArticleImage(){return articleImage;}
-    public String getArticleCategory(){return articleCategory;}
-    public int getArticleID(){return articleID;}
+    public String getArticleText() { return articleText; }
+    public String getArticleURL() { return articleURL; }
+    public String getArticleImage() { return articleImage; }
+    public String getArticleCategory() { return articleCategory; }
+    public int getArticleID() { return articleID; }
     public Summary[] getAllSummaries(){
         return this.summariesArray;
     }

@@ -49,9 +49,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(mViewHolder m_view_holder, int i) {
-        m_view_holder.articleCategory.setText(articles.get(i).articleCategory);
-        m_view_holder.articleText.setText(articles.get(i).articleText);
-        m_view_holder.articleImage.setImageResource(articles.get(i).articleID);
+        m_view_holder.articleCategory.setText(articles.get(i).getArticleCategory());
+        m_view_holder.articleText.setText(articles.get(i).getArticleText());
+        m_view_holder.articleImage.setImageResource(articles.get(i).getArticleID());
     }
 
     @Override
