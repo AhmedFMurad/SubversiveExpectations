@@ -20,7 +20,7 @@ public class CardViewActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.card_view_activity);
-        articleImage = (ImageView)findViewById(R.id.imageView);
+        articleImage = (ImageView)findViewById(R.id.image_view);
         articleCategory = (TextView)findViewById(R.id.title);
         articleText = (TextView)findViewById(R.id.content);
 
