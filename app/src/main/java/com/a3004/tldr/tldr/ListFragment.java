@@ -1,3 +1,4 @@
+/*
 package com.a3004.tldr.tldr;
 
 import android.os.Bundle;
@@ -24,6 +25,7 @@ public class ListFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext()));
-        mRecyclerView.setAdapter(new RecyclerViewAdapter(getActivity()));
+        mRecyclerView.setAdapter(new RecyclerViewAdapter(getActivity());
     }
 }
+*/

@@ -12,8 +12,10 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.mViewAdapter> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.mViewHolder> {
 
+    /*
+    // --- not working for now  Oct 22 ---
     private Context mContext;
 
     public RecyclerViewAdapter(Context mContext) { this.mContext = mContext; }
@@ -41,18 +43,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return 10;
     }
 
-    public static class mViewAdapter extends RecyclerView.ViewHolder {
+    public static class mViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
 
-        public mViewAdapter(View view) {
+        public mViewHolder(View view) {
             super(view);
             mView = view;
         }
     }
+    */
+
 
     // --- save this for later when Article and Summary classes get completed ---
 
-    /*
+
     public static class mViewHolder extends RecyclerView.ViewHolder {
 
         CardView mCardView;
@@ -95,5 +99,5 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() { return articles.size(); }
-    */
+
 }

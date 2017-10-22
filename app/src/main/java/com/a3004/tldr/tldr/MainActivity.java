@@ -25,29 +25,30 @@ public class MainActivity extends AppCompatActivity {
     //private MobileServiceClient mClient;
 
     // --- recycler view part ---
-    //private RecyclerView mRecyclerView;
-    //private List<Article> articles;
+    private RecyclerView mRecyclerView;
+    private ArrayList<Article> articles;
 
     // --- menu part ---
-    private DrawerLayout mDrawerLayout;
-    private ViewPager mViewPager;
-    private TabLayout mTabLayout;
+    //private DrawerLayout mDrawerLayout;
+    //private ViewPager mViewPager;
+    //private TabLayout mTabLayout;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tab_layout_activity);
+        setContentView(R.layout.recycler_view_activity);
 
         // added stuff from here
 
         // --- recycler view part ---
-        /*
+
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        */
+
 
         // --- menu part ---
+        /*
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         final ActionBar ab = getSupportActionBar();
@@ -70,9 +71,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         initViewPager();
+        */
 
-        //initData();
-        //initAdapter();
+        initData();
+        initAdapter();
 
 /*
         try{
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // --- recycler view part ---
-    /*
+
     private void initData() {
         articles = new ArrayList<>();
 
@@ -102,16 +104,17 @@ public class MainActivity extends AppCompatActivity {
         articles.add(new Article("", "Breaking News", R.drawable.pepe1));
         articles.add(new Article("", "Breaking News", R.drawable.pepe2));
     }
-    */
+
 
     // --- recycler view part ---
-    /*private void initAdapter() {
+    private void initAdapter() {
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(articles);
         mRecyclerView.setAdapter(adapter);
     }
-    */
+
 
     // --- menu part ---
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_overaction, menu);
@@ -152,4 +155,5 @@ public class MainActivity extends AppCompatActivity {
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setTabsFromPagerAdapter(mFragmentAdapter);
     }
+    */
 }
