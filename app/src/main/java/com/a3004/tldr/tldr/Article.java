@@ -1,13 +1,15 @@
 package com.a3004.tldr.tldr;
 
 
+import java.util.ArrayList;
+
 public class Article {
     private String articleText;
     private String articleImage;
     private String articleURL;
     private String articleCategory;
     private int articleID;
-    private Summary[] summariesArray;
+    private ArrayList<Summary> summaries;
 
     public Article(String articleText, String articleImage, String articleURL,
                    String articleCategory, int articleID) {
@@ -24,14 +26,13 @@ public class Article {
         this.articleID = articleID;
     }
 
+    //setters
     public void setArticleText(String text){
         articleText = text;
     }
-
     public void setArticleImage(String text){
         articleImage = text;
     }
-
     public void setArticleURL(String text){
         articleURL = text;
     }
@@ -42,8 +43,8 @@ public class Article {
     public String getArticleImage() { return articleImage; }
     public String getArticleCategory() { return articleCategory; }
     public int getArticleID() { return articleID; }
-    public Summary[] getAllSummaries(){
-        return this.summariesArray;
+    public ArrayList<Summary> getAllSummaries(){
+        return this.summaries;
     }
 
 

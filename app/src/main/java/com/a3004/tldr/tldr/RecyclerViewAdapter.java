@@ -1,5 +1,6 @@
 package com.a3004.tldr.tldr;
 
+import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,10 +9,50 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.mViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.mViewAdapter> {
 
+    private Context mContext;
+
+    public RecyclerViewAdapter(Context mContext) { this.mContext = mContext; }
+
+    @Override
+    public RecyclerViewAdapter.mViewAdapter onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view =
+                LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
+        return new mViewAdapter(view);
+    }
+
+    @Override
+    public void onBindViewHolder(final RecyclerViewAdapter.mViewAdapter holder, int position) {
+        final View view = holder.mView;
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return 10;
+    }
+
+    public static class mViewAdapter extends RecyclerView.ViewHolder {
+        public final View mView;
+
+        public mViewAdapter(View view) {
+            super(view);
+            mView = view;
+        }
+    }
+
+    // --- save this for later when Article and Summary classes get completed ---
+
+    /*
     public static class mViewHolder extends RecyclerView.ViewHolder {
 
         CardView mCardView;
@@ -30,9 +71,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private List<Article> articles;
 
-    RecyclerViewAdapter(List<Article> articles) {
-        this.articles = articles;
-    }
+    RecyclerViewAdapter(ArrayList<Article> articles) { this.articles = articles; }
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
@@ -56,4 +95,5 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() { return articles.size(); }
+    */
 }
