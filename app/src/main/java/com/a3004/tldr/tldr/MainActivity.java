@@ -1,24 +1,11 @@
 package com.a3004.tldr.tldr;
 
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import java.util.ArrayList;
-import java.util.List;
-import com.microsoft.windowsazure.mobileservices.*;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -73,6 +60,20 @@ public class MainActivity extends AppCompatActivity {
         initViewPager();
         */
 
+        /*  not a necessary part
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window window = getWindow();
+            // Translucent status bar
+            window.setFlags(
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            // Translucent navigation bar
+            window.setFlags(
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
+        */
+
         initData();
         initAdapter();
 
@@ -104,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
         articles.add(new Article("", "Breaking News", R.drawable.pepe1));
         articles.add(new Article("", "Breaking News", R.drawable.pepe2));
     }
-
 
     // --- recycler view part ---
     private void initAdapter() {
