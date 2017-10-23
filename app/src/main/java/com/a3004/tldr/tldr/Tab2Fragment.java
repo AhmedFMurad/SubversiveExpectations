@@ -1,3 +1,4 @@
+/*
 package com.a3004.tldr.tldr;
 
 import android.os.Bundle;
@@ -37,3 +38,4 @@ public class Tab2Fragment extends Fragment{
         return view;
     }
 }
+*/
