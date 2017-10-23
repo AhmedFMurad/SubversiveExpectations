@@ -1,159 +1,70 @@
 package com.a3004.tldr.tldr;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    //private MobileServiceClient mClient;
 
-    // --- recycler view part ---
-    private RecyclerView mRecyclerView;
-    private ArrayList<Article> articles;
-
-    // --- menu part ---
-    //private DrawerLayout mDrawerLayout;
-    //private ViewPager mViewPager;
-    //private TabLayout mTabLayout;
-
+    // added here
+    private RecyclerView mRecylerView;
+    private List<Article> articles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recycler_view_activity);
+        setContentView(R.layout.recycler_view);
 
         // added stuff from here
+        mRecylerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        // --- recycler view part ---
+        mRecylerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
-        // --- menu part ---
-        /*
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        final ActionBar ab = getSupportActionBar();
-        ab.setHomeAsUpIndicator(R.drawable.ic_menu);
-        ab.setDisplayHomeAsUpEnabled(true);
-        mViewPager = (ViewPager) findViewById(R.id.viewpager);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.main_drawer);
-        NavigationView navigationView =
-                (NavigationView) findViewById(R.id.nv_main_navigation);
-        if (navigationView != null) {
-            navigationView.setNavigationItemSelectedListener(
-                    new NavigationView.OnNavigationItemSelectedListener() {
-                        @Override
-                        public boolean onNavigationItemSelected(MenuItem menuItem) {
-                            menuItem.setChecked(true);
-                            mDrawerLayout.closeDrawers();
-                            return true;
-                        }
-                    });
-        }
-
-        initViewPager();
-        */
-
-        /*  not a necessary part
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window window = getWindow();
-            // Translucent status bar
-            window.setFlags(
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            // Translucent navigation bar
-            window.setFlags(
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        }
-        */
 
         initData();
         initAdapter();
 
-/*
-        try{
-            mClient = new MobileServiceClient(
-                    "https://tldrapp.azurewebsites.net",
-                    this
-            );
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-*/
     }
-
-    // --- recycler view part ---
 
     private void initData() {
         articles = new ArrayList<>();
-
-        // add articles here
-        // need to link to a website
-        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe2));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe2));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe2));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe2));
     }
 
-    // --- recycler view part ---
-    private void initAdapter() {
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(articles);
-        mRecyclerView.setAdapter(adapter);
-    }
+    public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>
+    {
 
-
-    // --- menu part ---
-    /*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_overaction, menu);
-        return true;
-    }
-
-    // --- menu part ---
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    // --- menu part ---
-    private void initViewPager() {
-        mTabLayout = (TabLayout) findViewById(R.id.tabs);
-        List<String> titles = new ArrayList<>();
-        titles.add("category1");
-        titles.add("category2");
-        titles.add("category3");
-
-        for(int i = 0; i < titles.size(); i++) {
-            mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(i)));
+        @Override
+        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            MyViewHolder holder = new MyViewHolder(LayoutInflater.from(
+                    MainActivity.this).inflate(R.layout.item_home, parent, false));
+            return holder;
         }
 
-        List<Fragment> fragments = new ArrayList<>();
-        for(int i = 0; i < titles.size(); i++) {
-            fragments.add(new ListFragment());
+        @Override
+        public void onBindViewHolder(MyViewHolder holder, int position) {
+            holder.mTextView.setText(mDatas.get(position));
         }
 
-        FragmentAdapter mFragmentAdapter =
-                new FragmentAdapter(getSupportFragmentManager(), fragments, titles);
-        mViewPager.setAdapter(mFragmentAdapter);
-        mTabLayout.setupWithViewPager(mViewPager);
-        mTabLayout.setTabsFromPagerAdapter(mFragmentAdapter);
+        @Override
+        public int getItemCount() {
+            return mDatas.size();
+        }
+
+        public class MyViewHolder extends RecyclerView.ViewHolder {
+            TextView mTextView;
+
+            public MyViewHolder(View view) {
+                super(view);
+                mTextView = (TextView) view.findViewById(R.id.text_view);
+            }
+        }
     }
-    */
 }
