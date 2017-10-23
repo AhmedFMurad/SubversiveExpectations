@@ -32,7 +32,7 @@ public class Tab2Fragment extends Fragment{
         articles.add(new Article("", "Breaking News", R.drawable.pepe2));
 
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(articles);
-        mRecyclerView.setAdapter(adapter);
+        //mRecyclerView.setAdapter(adapter);
 
         return view;
     }
