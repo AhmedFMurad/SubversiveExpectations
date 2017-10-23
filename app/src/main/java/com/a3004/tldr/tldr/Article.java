@@ -8,22 +8,34 @@ public class Article {
     private String articleImage;
     private String articleURL;
     private String articleCategory;
-    private int articleID;
+    private int articleID = 0;
+    private int counter = 0;
+    private String articleTitle;
+    private String articleDescription;
     private ArrayList<Summary> summaries;
 
-    public Article(String articleText, String articleImage, String articleURL,
-                   String articleCategory, int articleID) {
+    public Article(String articleTitle, String articleText, String articleImage, String articleURL,
+                   String articleCategory) {
         this.articleText = articleText;
         this.articleImage = articleImage;
         this.articleURL = articleURL;
         this.articleCategory = articleCategory;
-        this.articleID = articleID;
+        this.articleID = counter;
+        counter++;
     }
 
     public Article(String articleCategory, String articleText, int articleID) {
         this.articleCategory = articleCategory;
         this.articleText = articleText;
         this.articleID = articleID;
+    }
+
+    public Article(String articleURL, String articleTitle, String articleDescription){
+        this.articleDescription = articleDescription;
+        this.articleURL = articleURL;
+        this.articleTitle = articleTitle;
+        this.articleID = counter;
+        counter++;
     }
 
     //setters
