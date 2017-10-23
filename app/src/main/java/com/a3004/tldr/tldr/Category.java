@@ -1,55 +1,75 @@
 package com.a3004.tldr.tldr;
 
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserFactory;
-
-import java.io.InputStream;
-import java.net.HttpURLConnection;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 import java.net.URL;
 import java.util.ArrayList;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 public class Category {
-    public ArrayList<Article> articles;
-    private XmlPullParserFactory xmlFactoryObj;
+    private ArrayList<Article> articles = new ArrayList<>();
 
-    public ArrayList<Article> getAllArticles() {
-        return this.articles;
-    }
+    public ArrayList<Article> getArticles() { return this.articles; }
 
     public void parseXML(String site){
         try{
             /* Make connection with the url*/
             URL url = new URL(site);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            InputStream is = conn.getInputStream();
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.parse(new InputSource(url.openStream()));
+            doc.getDocumentElement().normalize();
 
-            conn.setReadTimeout(10000);
-            conn.setConnectTimeout(10000);
-            conn.setRequestMethod("GET");
-            conn.setDoInput(true);
-            conn.connect();
+            NodeList nodeList = doc.getElementsByTagName("item");
 
-            /* Parse the XML */
-            xmlFactoryObj = XmlPullParserFactory.newInstance();
-            XmlPullParser parser = xmlFactoryObj.newPullParser();
-            parser.setInput(is, null);
-            int eventType = parser.getEventType();
+            //get titles of articles
+            for (int i = 0; i < nodeList.getLength(); i++){
+                Element element = (Element) nodeList.item(i);
 
-            while (eventType != XmlPullParser.END_DOCUMENT){
-                if (eventType == XmlPullParser.START_DOCUMENT){
+                //get titles
+                NodeList title = element.getElementsByTagName("title");
+                Element titleLine = (Element) title.item(0);
+                //System.out.println("Article" + (i+1) + " " + titleLine.getTextContent());
+                String titleString = titleLine.getTextContent();
 
-                } else if (eventType == XmlPullParser.START_TAG){
-                    Article article;
-                    if (parser.getName().equals("item")){
+                //get links
+                NodeList link = element.getElementsByTagName("link");
+                Element linkLine = (Element) link.item(0);
+                //System.out.println("Link" + (i+1) + " " + linkLine.getTextContent());
+                String linkString = linkLine.getTextContent();
 
-                    }
-                }
+
+                //getting descriptions
+                NodeList description = element.getElementsByTagName("description");
+                Element descLine = (Element) description.item(0);
+                //System.out.println("Description" + (i+1) + descLine.getTextContent());
+                String descString = descLine.getTextContent();
+
+                Article article = new Article(linkString, titleString, descString);
+                articles.add(article);
             }
+
+
+
 
         } catch (Exception e){
             e.printStackTrace();
         }
 
+    }
+
+    public static void main (String[] args){
+        Category NYT;
+        NYT = new Category();
+
+        NYT.parseXML("http://rss.nytimes.com/services/xml/rss/nyt/Education.xml");
+
+        for (int i = 0; i < NYT.getArticles().size(); i++){
+            //System.out.println(NYT.getArticles().get(i).getArticleID());
+        }
     }
 }
