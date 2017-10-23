@@ -1,6 +1,5 @@
 package com.a3004.tldr.tldr;
 
-import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,48 +13,7 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.mViewHolder> {
 
-    /*
-    // --- not working for now  Oct 22 ---
-    private Context mContext;
-
-    public RecyclerViewAdapter(Context mContext) { this.mContext = mContext; }
-
-    @Override
-    public RecyclerViewAdapter.mViewAdapter onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view =
-                LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
-        return new mViewAdapter(view);
-    }
-
-    @Override
-    public void onBindViewHolder(final RecyclerViewAdapter.mViewAdapter holder, int position) {
-        final View view = holder.mView;
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-    }
-
-    @Override
-    public int getItemCount() {
-        return 10;
-    }
-
-    public static class mViewHolder extends RecyclerView.ViewHolder {
-        public final View mView;
-
-        public mViewHolder(View view) {
-            super(view);
-            mView = view;
-        }
-    }
-    */
-
-
     // --- save this for later when Article and Summary classes get completed ---
-
 
     public static class mViewHolder extends RecyclerView.ViewHolder {
 
@@ -85,7 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public mViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).
-                inflate(R.layout.item, viewGroup, false);
+                inflate(R.layout.activity_one, viewGroup, false);
         mViewHolder mvh = new mViewHolder(view);
         return mvh;
     }
