@@ -33,12 +33,4 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.+'
     // menu layout
     compile 'com.android.support:design:26.+'
-    //azure database
-    compile 'com.microsoft.azure:azure-mobile-android:3.3.0@aar'
-}
-
-buildscript {
-    repositories {
-        jcenter()
-    }
 }

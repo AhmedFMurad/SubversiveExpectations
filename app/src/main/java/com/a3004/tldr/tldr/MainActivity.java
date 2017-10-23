@@ -9,8 +9,6 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
-    //private MobileServiceClient mClient;
-
     // --- recycler view part ---
     private RecyclerView mRecyclerView;
     private ArrayList<Article> articles;
@@ -77,16 +75,6 @@ public class MainActivity extends AppCompatActivity {
         initData();
         initAdapter();
 
-/*
-        try{
-            mClient = new MobileServiceClient(
-                    "https://tldrapp.azurewebsites.net",
-                    this
-            );
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-*/
     }
 
     // --- recycler view part ---
