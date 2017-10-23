@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ArrayList<Article> articles;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,25 +22,15 @@ public class MainActivity extends AppCompatActivity {
 
         // added stuff from here
 
-        // --- recycler view part ---
 
+
+        // --- recycler view part ---
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
 
         initData();
         initAdapter();
 
-/*
-        try{
-            mClient = new MobileServiceClient(
-                    "https://tldrapp.azurewebsites.net",
-                    this
-            );
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-*/
     }
 
     // --- recycler view part ---
