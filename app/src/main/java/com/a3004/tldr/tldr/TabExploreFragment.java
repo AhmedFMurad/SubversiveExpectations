@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-public class Tab2Fragment extends Fragment{
+public class TabExploreFragment extends Fragment{
 
-    private static final String TAG = "Tab2Fragment";
+    private static final String TAG = "TabExploreFragment";
 
     private RecyclerViewAdapter mRecyclerView;
     private ArrayList<Article> articles;
@@ -19,7 +19,7 @@ public class Tab2Fragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment2_layout,container,false);
+        View view = inflater.inflate(R.layout.fragment_explore_layout,container,false);
         articles = new ArrayList<>();
 
         articles.add(new Article("", "Breaking News", R.drawable.pepe1));
@@ -32,7 +32,7 @@ public class Tab2Fragment extends Fragment{
         articles.add(new Article("", "Breaking News", R.drawable.pepe2));
 
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(articles);
-        mRecyclerView.setAdapter(adapter);
+        //mRecyclerView.setAdapter(adapter);
 
         return view;
     }
