@@ -20,6 +20,7 @@ public class Article {
         this.articleURL = articleURL;
         this.articleCategory = articleCategory;
         this.articleID++;
+        //
     }
 
     public Article(String articleCategory, String articleText, int articleID) {
