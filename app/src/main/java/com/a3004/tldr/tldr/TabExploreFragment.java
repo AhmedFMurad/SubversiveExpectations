@@ -6,27 +6,33 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
-public class TabExploreFragment extends Fragment {
+import java.util.ArrayList;
 
-    private static final String TAG = "TabExploreFragment";
+public class Tab2Fragment extends Fragment{
 
-    private Button btnTEST;
+    private static final String TAG = "Tab2Fragment";
+
+    private RecyclerViewAdapter mRecyclerView;
+    private ArrayList<Article> articles;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_explore_layout,container,false);
-        btnTEST = (Button) view.findViewById(R.id.btnTEST);
+        View view = inflater.inflate(R.layout.fragment2_layout,container,false);
+        articles = new ArrayList<>();
 
-        btnTEST.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "TESTING BUTTON CLICK 2",Toast.LENGTH_SHORT).show();
-            }
-        });
+        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
+        articles.add(new Article("", "Breaking News", R.drawable.pepe2));
+        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
+        articles.add(new Article("", "Breaking News", R.drawable.pepe2));
+        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
+        articles.add(new Article("", "Breaking News", R.drawable.pepe2));
+        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
+        articles.add(new Article("", "Breaking News", R.drawable.pepe2));
+
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(articles);
+        mRecyclerView.setAdapter(adapter);
 
         return view;
     }

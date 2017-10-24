@@ -8,7 +8,7 @@ public class Article {
     private String articleImage;
     private String articleURL;
     private String articleCategory;
-    private int articleID = 0;
+    private static int articleID = 0;
     private int counter = 0;
     private String articleTitle;
     private String articleDescription;
@@ -36,6 +36,14 @@ public class Article {
         this.articleTitle = articleTitle;
         this.articleID = counter;
         counter++;
+    }
+
+    public void displayText(){
+        if (summaries.isEmpty() == true){
+            //show descriptions
+        } else {
+            //show summaries
+        }
     }
 
     //setters

@@ -69,7 +69,7 @@ public class Category {
         NYT.parseXML("http://rss.nytimes.com/services/xml/rss/nyt/Education.xml");
 
         for (int i = 0; i < NYT.getArticles().size(); i++){
-            //System.out.println(NYT.getArticles().get(i).getArticleID());
+            System.out.println(NYT.getArticles().get(i).getArticleID());
         }
     }
 }
