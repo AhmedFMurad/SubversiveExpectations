@@ -9,22 +9,22 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class Tab3Fragment extends Fragment {
+public class TabExploreFragment extends Fragment {
 
-    private static final String TAG = "Tab3Fragment";
+    private static final String TAG = "TabExploreFragment";
 
     private Button btnTEST;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment3_layout,container,false);
+        View view = inflater.inflate(R.layout.fragment_explore_layout,container,false);
         btnTEST = (Button) view.findViewById(R.id.btnTEST);
 
         btnTEST.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "TESTING BUTTON CLICK 3",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "TESTING BUTTON CLICK 2",Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ActivityOne extends AppCompatActivity {
+public class ActivityHome extends AppCompatActivity {
 
     // --- recycler view part ---
     private RecyclerView mRecyclerView;
@@ -15,7 +15,7 @@ public class ActivityOne extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_one);
+        setContentView(R.layout.activity_home);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));

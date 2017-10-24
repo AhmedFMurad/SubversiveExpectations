@@ -17,41 +17,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recycler_view_activity); // should be activity_main
-
-        // added stuff from here
-
-
-
-        // --- recycler view part ---
-        //mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        //mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        //initData();
-        //initAdapter();
-
+        setContentView(R.layout.activity_main);
     }
 
-    // --- recycler view part ---
-
-    private void initData() {
-        articles = new ArrayList<>();
-
-        // add articles here
-        // need to link to a website
-        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe2));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe2));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe2));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe2));
-    }
-
-    // --- recycler view part ---
-    private void initAdapter() {
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(articles);
-        mRecyclerView.setAdapter(adapter);
-    }
 }

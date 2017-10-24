@@ -43,7 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public mViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).
-                inflate(R.layout.activity_one, viewGroup, false);
+                inflate(R.layout.activity_home, viewGroup, false);
         mViewHolder mvh = new mViewHolder(view);
         return mvh;
     }
