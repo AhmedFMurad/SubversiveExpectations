@@ -9,7 +9,6 @@ public class Article {
     private String articleURL;
     private String articleCategory;
     private static int articleID = 0;
-    private int counter = 0;
     private String articleTitle;
     private String articleDescription;
     private ArrayList<Summary> summaries;
@@ -20,8 +19,7 @@ public class Article {
         this.articleImage = articleImage;
         this.articleURL = articleURL;
         this.articleCategory = articleCategory;
-        this.articleID = counter;
-        counter++;
+        this.articleID++;
     }
 
     public Article(String articleCategory, String articleText, int articleID) {
@@ -34,8 +32,7 @@ public class Article {
         this.articleDescription = articleDescription;
         this.articleURL = articleURL;
         this.articleTitle = articleTitle;
-        this.articleID = counter;
-        counter++;
+        this.articleID++;
     }
 
     public void displayText(){
