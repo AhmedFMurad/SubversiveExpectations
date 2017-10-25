@@ -38,7 +38,8 @@ public class Article {
 
     public void displayText(){
         if (summaries.isEmpty() == true){
-            //show descriptions
+            //display descriptions
+
         } else {
             //show summaries
         }

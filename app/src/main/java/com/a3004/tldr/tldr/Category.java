@@ -49,10 +49,6 @@ public class Category {
                 Article article = new Article(linkString, titleString, descString);
                 articles.add(article);
             }
-
-
-
-
         } catch (Exception e){
             e.printStackTrace();
         }
