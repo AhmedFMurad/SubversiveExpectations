@@ -51,7 +51,7 @@
 
             <TextView
                 android:id="@+id/points"
-                android:layout_width="250dp"
+                android:layout_width="235dp"
                 android:layout_height="50dp"
                 android:layout_below="@+id/notification_icon"
                 android:layout_toRightOf="@+id/points_icon"
@@ -71,13 +71,12 @@
                 android:gravity="center_vertical"
                 android:scaleType="center"
                 android:text="(points)"
-                android:textAlignment="textEnd"
+                android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="@android:color/black"
                 android:textSize="14sp" />
 
         </RelativeLayout>
-
 
         <RelativeLayout
             android:id="@+id/bottomBar"
