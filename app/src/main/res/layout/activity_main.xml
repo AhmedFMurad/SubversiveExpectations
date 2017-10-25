@@ -20,7 +20,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-
                 <android.support.design.widget.TabLayout
                     android:id="@+id/tabs"
                     android:layout_width="match_parent"
@@ -64,6 +63,7 @@
                 app:menu="@menu/bottom_navigation_menu">
 
             </android.support.design.widget.BottomNavigationView>
+
         </RelativeLayout>
 
     </RelativeLayout>
