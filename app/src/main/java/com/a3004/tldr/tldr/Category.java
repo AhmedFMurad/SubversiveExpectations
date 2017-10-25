@@ -33,20 +33,17 @@ public class Category {
                 //get titles
                 NodeList title = element.getElementsByTagName("title");
                 Element titleLine = (Element) title.item(0);
-                //System.out.println("Article" + (i+1) + " " + titleLine.getTextContent());
                 String titleString = titleLine.getTextContent();
 
                 //get links
                 NodeList link = element.getElementsByTagName("link");
                 Element linkLine = (Element) link.item(0);
-                //System.out.println("Link" + (i+1) + " " + linkLine.getTextContent());
                 String linkString = linkLine.getTextContent();
 
 
                 //getting descriptions
                 NodeList description = element.getElementsByTagName("description");
                 Element descLine = (Element) description.item(0);
-                //System.out.println("Description" + (i+1) + descLine.getTextContent());
                 String descString = descLine.getTextContent();
 
                 Article article = new Article(linkString, titleString, descString);
