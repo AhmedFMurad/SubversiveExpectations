@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -7,19 +8,74 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="460dp">
+
+        <TextView
+            android:id="@+id/category_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:text="CATEGORIES"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textColor="?attr/colorPrimaryDark"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/category_title">
+
+            <ImageButton
+                android:id="@+id/category_image_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:scaleType="center"
+                android:layout_weight="2"
+                app:srcCompat="@mipmap/ic_launcher" /> <!-- replace by new image later -->
+
+            <ImageButton
+                android:id="@+id/category_image_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/category_image_1"
+                android:scaleType="center"
+                android:layout_weight="2"
+                app:srcCompat="@mipmap/ic_launcher" /> <!-- replace by new image later -->
+
+            <ImageButton
+                android:id="@+id/category_image_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/category_image_2"
+                android:scaleType="center"
+                android:layout_weight="2"
+                app:srcCompat="@mipmap/ic_launcher" /> <!-- replace by new image later -->
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true">
 
         <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottomNavView_Bar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/bottomNavView_Bar"
-            android:background="@color/cardview_light_background"
             android:layout_alignParentBottom="true"
+            android:background="@color/cardview_light_background"
             app:menu="@menu/bottom_navigation_menu">
 
         </android.support.design.widget.BottomNavigationView>
+
     </RelativeLayout>
+
 
 </LinearLayout>
