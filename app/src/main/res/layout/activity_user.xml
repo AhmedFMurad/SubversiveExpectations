@@ -20,7 +20,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="410dp"
             android:layout_below="@+id/user_name">
 
             <ImageView
@@ -35,7 +35,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@+id/user_name"
                 android:layout_marginEnd="13dp"
                 android:layout_marginTop="10dp"
                 android:layout_toEndOf="@+id/notification_icon"
@@ -75,6 +74,17 @@
                 android:textAllCaps="false"
                 android:textColor="@android:color/black"
                 android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/logout_button"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:text="LOG OUT"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="263dp" />
 
         </RelativeLayout>
 
