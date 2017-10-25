@@ -59,12 +59,9 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent3);
                         break;
                 }
-
-
                 return false;
             }
         });
-
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -73,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new TabHomeFragment());
         adapter.addFragment(new TabUserFragment());
         viewPager.setAdapter(adapter);
-    }
     }
 
 }
