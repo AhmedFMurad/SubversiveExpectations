@@ -7,19 +7,96 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/bottomBar"
-        android:layout_alignParentBottom="true">
+        android:layout_height="match_parent">
 
-        <android.support.design.widget.BottomNavigationView
+        <TextView
+            android:id="@+id/user_name"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/bottomNavView_Bar"
-            android:background="@color/cardview_light_background"
-            android:layout_alignParentBottom="true"
-            app:menu="@menu/bottom_navigation_menu">
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:text="  USER NAME"
+            android:gravity="center_vertical" />
 
-        </android.support.design.widget.BottomNavigationView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_name">
+
+            <ImageView
+                android:id="@+id/notification_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:scaleType="center"
+                app:srcCompat="@drawable/ic_add_alert_black_18dp" />
+
+            <Switch
+                android:id="@+id/switch_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/user_name"
+                android:layout_marginEnd="13dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/notification_icon"
+                android:text="Notification" />
+
+            <ImageView
+                android:id="@+id/points_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/notification_icon"
+                android:scaleType="center"
+                app:srcCompat="@drawable/ic_shopping_basket_black_18dp" />
+
+            <TextView
+                android:id="@+id/points"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/notification_icon"
+                android:layout_toRightOf="@+id/points_icon"
+                android:scaleType="center"
+                android:text="My Current Points"
+                android:gravity="center_vertical"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/points_show"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/notification_icon"
+                android:layout_toRightOf="@+id/points"
+                android:gravity="center_vertical"
+                android:scaleType="center"
+                android:text="(points)"
+                android:textAlignment="textEnd"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true">
+
+            <android.support.design.widget.BottomNavigationView
+                android:id="@+id/bottomNavView_Bar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:background="@color/cardview_light_background"
+                app:menu="@menu/bottom_navigation_menu">
+
+            </android.support.design.widget.BottomNavigationView>
+
+        </RelativeLayout>
+
     </RelativeLayout>
 
 </LinearLayout>

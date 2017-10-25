@@ -25,7 +25,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         mViewHolder(View itemView) {
             super(itemView);
             mCardView = (CardView)itemView.findViewById(R.id.card_view);
-            articleImage = (ImageView)itemView.findViewById(R.id.article_image);
+            articleImage = (ImageView)itemView.findViewById(R.id.image_view);
             articleCategory = (TextView)itemView.findViewById(R.id.title);
             articleText = (TextView)itemView.findViewById(R.id.content);
         }
