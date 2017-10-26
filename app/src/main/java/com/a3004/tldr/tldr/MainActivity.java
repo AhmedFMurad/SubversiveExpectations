@@ -1,24 +1,23 @@
 package com.a3004.tldr.tldr;
 
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private SectionsPageAdapter mSectionsPageAdapter;
-    private ViewPager mViewPager;
+    //private SectionsPageAdapter mSectionsPageAdapter;
+    //private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_explore);
+        setContentView(R.layout.activity_user_beforelogin);
 
-        mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
+        //mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        //mViewPager = (ViewPager) findViewById(R.id.container);
         //setupViewPager(mViewPager);
 /*
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
