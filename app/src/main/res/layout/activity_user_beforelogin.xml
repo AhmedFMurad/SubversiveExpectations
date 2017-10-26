@@ -38,11 +38,12 @@
                 android:id="@+id/switch_notification"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@+id/notification_icon"
+                android:text="Notification"
+                android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="13dp"
-                android:layout_marginTop="10dp"
-                android:layout_toEndOf="@+id/notification_icon"
-                android:text="Notification" />
+                android:layout_alignBottom="@+id/notification_icon" />
 
         </RelativeLayout>
 
