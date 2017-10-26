@@ -80,12 +80,11 @@
 
             <Button
                 android:id="@+id/logout_button"
-                android:layout_width="350dp"
-                android:layout_height="60dp"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="263dp"
-                android:elevation="0dp"
                 android:text="LOG OUT"
                 android:textSize="18sp"
                 android:textStyle="bold" />

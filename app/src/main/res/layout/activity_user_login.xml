@@ -16,6 +16,45 @@
             android:layout_width="match_parent"
             android:layout_height="400dp">
 
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:id="@+id/user_name"
+                    android:text="User Name"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:id="@+id/user_name_edited"
+                    android:layout_below="@+id/user_name"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:id="@+id/pw"
+                    android:text="Password"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    android:layout_below="@+id/user_name_edited"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:id="@+id/pw_edited"
+                    android:layout_below="@+id/pw"/>
+
+            </RelativeLayout>
+
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="300dp"
