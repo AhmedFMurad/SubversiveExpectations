@@ -1,14 +1,8 @@
 package com.a3004.tldr.tldr;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -19,14 +13,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_explore);
 
         mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
-        setupViewPager(mViewPager);
-
+        //setupViewPager(mViewPager);
+/*
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
@@ -71,5 +65,6 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new TabUserFragment());
         viewPager.setAdapter(adapter);
     }
-
+    */
+    }
 }

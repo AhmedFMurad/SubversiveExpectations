@@ -25,7 +25,6 @@ public class ActivityHome extends AppCompatActivity {
     }
 
     // --- recycler view part ---
-
     private void initData() {
         articles = new ArrayList<>();
 

@@ -6,33 +6,27 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
-import java.util.ArrayList;
+public class TabExploreFragment extends Fragment {
 
-public class TabExploreFragment extends Fragment{
+    private static final String TAG = "TabHomeFragment";
 
-    private static final String TAG = "TabExploreFragment";
-
-    private RecyclerViewAdapter mRecyclerView;
-    private ArrayList<Article> articles;
+    private Button btnTEST;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_explore_layout,container,false);
-        articles = new ArrayList<>();
+        btnTEST = (Button) view.findViewById(R.id.btnTEST);
 
-        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe2));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe2));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe2));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe1));
-        articles.add(new Article("", "Breaking News", R.drawable.pepe2));
-
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(articles);
-        //mRecyclerView.setAdapter(adapter);
+        btnTEST.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "TESTING BUTTON CLICK 1",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return view;
     }

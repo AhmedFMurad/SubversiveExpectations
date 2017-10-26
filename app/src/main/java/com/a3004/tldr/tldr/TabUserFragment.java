@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class TabUserFragment extends Fragment {
 
-    private static final String TAG = "Tab3Userragment";
+    private static final String TAG = "TabUserFragment";
 
     private Button btnTEST;
 
