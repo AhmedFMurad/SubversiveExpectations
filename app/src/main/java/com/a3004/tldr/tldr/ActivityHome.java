@@ -45,5 +45,4 @@ public class ActivityHome extends AppCompatActivity {
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(articles);
         mRecyclerView.setAdapter(adapter);
     }
-
 }
