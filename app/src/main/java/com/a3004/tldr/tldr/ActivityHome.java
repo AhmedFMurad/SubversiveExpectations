@@ -2,7 +2,6 @@ package com.a3004.tldr.tldr;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,7 +29,7 @@ public class ActivityHome extends AppCompatActivity {
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.ic_explore:
                         Intent intent0 = new Intent(ActivityHome.this, MainActivity.class);
