@@ -1,6 +1,5 @@
 package com.a3004.tldr.tldr;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +22,7 @@ public class ActivityUser extends AppCompatActivity{
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
-                switch (item.getItemId()){
+/*                switch (item.getItemId()){
                     case R.id.ic_explore:
                         Intent intent0 = new Intent(ActivityUser.this, ActivityExplore.class);
                         startActivity(intent0);
@@ -38,7 +37,7 @@ public class ActivityUser extends AppCompatActivity{
                         Intent intent2 = new Intent(ActivityUser.this, ActivityUser.class);
                         startActivity(intent2);
                         break;
-                }
+                }*/
                 return false;
             }
         });
