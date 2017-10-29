@@ -34,6 +34,10 @@ public class Users {
         this.preferedCategories[this.amountOfCategories] = null;
     }
 
+    public static void main (String[] args){
+        Users user = new Users();
 
+        System.out.println("hi\n");
+    }
 
 }
