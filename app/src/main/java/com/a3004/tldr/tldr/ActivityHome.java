@@ -32,7 +32,7 @@ public class ActivityHome extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.ic_explore:
-                        Intent intent0 = new Intent(ActivityHome.this, MainActivity.class);
+                        Intent intent0 = new Intent(ActivityHome.this, ActivityExplore.class);
                         startActivity(intent0);
                         break;
 

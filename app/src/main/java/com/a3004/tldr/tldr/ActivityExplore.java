@@ -25,7 +25,7 @@ public class ActivityExplore extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.ic_explore:
-                        Intent intent0 = new Intent(ActivityExplore.this, MainActivity.class);
+                        Intent intent0 = new Intent(ActivityExplore.this, ActivityExplore.class);
                         startActivity(intent0);
                         break;
 
