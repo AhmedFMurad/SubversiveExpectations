@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -18,10 +17,8 @@ public class ActivityHome extends AppCompatActivity {
 
     // --- recycler view part ---
     private RecyclerView mRecyclerView;
-    //private ProgressBar progressBar;
     private RecyclerViewAdapter adapter;
     private ArrayList<Article> articles;
-    TextView tv;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +60,7 @@ public class ActivityHome extends AppCompatActivity {
         initView();
     }
 
-    // --- recycler view part ---
+    // --- initial ArrayList data ---
     private void initData() {
         articles = new ArrayList<>();
 
@@ -79,9 +76,8 @@ public class ActivityHome extends AppCompatActivity {
         articles.add(new Article("", "Breaking News", R.drawable.pepe2));
     }
 
-    // --- recycler view part ---
+    // --- initial recycler view ---
     private void initView() {
-
         // set adapter
         adapter = new RecyclerViewAdapter(ActivityHome.this, articles);
         mRecyclerView.setAdapter(adapter);
@@ -90,7 +86,7 @@ public class ActivityHome extends AppCompatActivity {
         LinearLayoutManager manager = new LinearLayoutManager(ActivityHome.this);
         mRecyclerView.setLayoutManager(manager);
 
-        // set item listener
+        // set item listener for recycler view
         adapter.setOnItemClickListener(new MyItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
