@@ -15,7 +15,7 @@ public class CardViewActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.card_view_activity);
+        setContentView(R.layout.item);
         articleImage = (ImageView)findViewById(R.id.image_view);
         articleCategory = (TextView)findViewById(R.id.title);
         articleText = (TextView)findViewById(R.id.content);

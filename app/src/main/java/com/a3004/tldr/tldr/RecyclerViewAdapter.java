@@ -1,61 +1,76 @@
 package com.a3004.tldr.tldr;
 
-import android.support.v7.widget.CardView;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.view.View;
+import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.mViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<mViewHolder> {
 
     // --- save this for later when Article and Summary classes get completed ---
 
-    public static class mViewHolder extends RecyclerView.ViewHolder {
-
-        CardView mCardView;
-        ImageView articleImage;
-        TextView articleCategory;
-        TextView articleText;
-
-        mViewHolder(View itemView) {
-            super(itemView);
-            mCardView = (CardView)itemView.findViewById(R.id.card_view);
-            articleImage = (ImageView)itemView.findViewById(R.id.image_view);
-            articleCategory = (TextView)itemView.findViewById(R.id.title);
-            articleText = (TextView)itemView.findViewById(R.id.content);
-        }
-    }
-
+    private Context context;
     private List<Article> articles;
+    private LayoutInflater mInflater;
+    private View view;
+    private MyItemClickListener listener;
 
-    RecyclerViewAdapter(ArrayList<Article> articles) { this.articles = articles; }
-
-    @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-        super.onAttachedToRecyclerView(recyclerView);
-    }
-
-    @Override
-    public mViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).
-                inflate(R.layout.activity_home, viewGroup, false);
-        mViewHolder mvh = new mViewHolder(view);
-        return mvh;
-    }
-
-    @Override
-    public void onBindViewHolder(mViewHolder m_view_holder, int i) {
-        m_view_holder.articleCategory.setText(articles.get(i).getArticleCategory());
-        m_view_holder.articleText.setText(articles.get(i).getArticleText());
-        m_view_holder.articleImage.setImageResource(articles.get(i).getArticleID());
+    public RecyclerViewAdapter(Context context, List<Article> articles) {
+        this.context = context;
+        this.articles = articles;
+        mInflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getItemCount() { return articles.size(); }
 
+    @Override
+    public mViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
+        view = mInflater.inflate(R.layout.item, parent, false);
+        mViewHolder viewHolder = new mViewHolder(view, listener);
+        return viewHolder;
+    }
+
+    public void onBindViewHolder(final mViewHolder holder, final int position) {
+        holder.tv.setText(articles.get(position).getArticleText());
+        holder.iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, position +"abc", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void setOnItemClickListener(MyItemClickListener listener) {
+        this.listener = listener;
+    }
+}
+
+class mViewHolder extends RecyclerView.ViewHolder {
+    ImageView iv;
+    View itemView;
+    TextView tv;
+    MyItemClickListener mListener;
+
+    public mViewHolder(View itemView, final MyItemClickListener mListener) {
+        super(itemView);
+        this.itemView = itemView;
+        iv = (ImageView) itemView.findViewById(R.id.image_view);
+        tv = (TextView) itemView.findViewById(R.id.title);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onItemClick(v, getAdapterPosition());
+            }
+        });
+    }
+}
+interface MyItemClickListener {
+    void onItemClick(View view, int position);
 }

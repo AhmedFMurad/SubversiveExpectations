@@ -8,6 +8,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -15,7 +18,10 @@ public class ActivityHome extends AppCompatActivity {
 
     // --- recycler view part ---
     private RecyclerView mRecyclerView;
+    //private ProgressBar progressBar;
+    private RecyclerViewAdapter adapter;
     private ArrayList<Article> articles;
+    TextView tv;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,11 +56,11 @@ public class ActivityHome extends AppCompatActivity {
             }
         });
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        //mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         initData();
-        initAdapter();
+        initView();
     }
 
     // --- recycler view part ---
@@ -74,8 +80,22 @@ public class ActivityHome extends AppCompatActivity {
     }
 
     // --- recycler view part ---
-    private void initAdapter() {
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(articles);
+    private void initView() {
+
+        // set adapter
+        adapter = new RecyclerViewAdapter(ActivityHome.this, articles);
         mRecyclerView.setAdapter(adapter);
+
+        // set layout for recycler view
+        LinearLayoutManager manager = new LinearLayoutManager(ActivityHome.this);
+        mRecyclerView.setLayoutManager(manager);
+
+        // set item listener
+        adapter.setOnItemClickListener(new MyItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(ActivityHome.this, position+"", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
