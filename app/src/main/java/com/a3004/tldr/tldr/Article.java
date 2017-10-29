@@ -13,6 +13,9 @@ public class Article {
     private String articleDescription;
     private ArrayList<Summary> summaries;
 
+    public Article() {
+
+    }
     public Article(String articleTitle, String articleText, String articleImage, String articleURL,
                    String articleCategory) {
         this.articleText = articleText;
