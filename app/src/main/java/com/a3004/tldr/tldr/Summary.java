@@ -7,4 +7,8 @@ import java.util.Map;
 public class Summary {
     protected Map<String, Integer> vote;
     protected int articleID;
+
+    public Summary() {
+
+    }
 }

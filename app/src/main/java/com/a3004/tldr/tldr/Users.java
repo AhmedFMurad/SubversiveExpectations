@@ -11,6 +11,9 @@ public class Users {
     protected Date lastLogin;
     protected int amountOfCategories;
 
+    public Users() {
+
+    }
     public String getUserName(){
         return username;
     }

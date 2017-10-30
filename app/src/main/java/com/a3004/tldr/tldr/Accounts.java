@@ -31,6 +31,9 @@ public class Accounts extends Users {
         return "";
     }
 
+    public Accounts(){
+
+    }
     public boolean login(String username, String password){
         // Check database for username in if statement below
         if(true){

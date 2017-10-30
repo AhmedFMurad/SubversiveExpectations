@@ -15,6 +15,9 @@ public class Category {
 
     public ArrayList<Article> getArticles() { return this.articles; }
 
+    public Category() {
+
+    }
     public void parseXML(String site){
         try{
             /* Make connection with the url*/
