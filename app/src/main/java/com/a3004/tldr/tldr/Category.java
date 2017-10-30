@@ -18,6 +18,7 @@ public class Category {
     public Category() {
 
     }
+
     public void parseXML(String site){
         try{
             /* Make connection with the url*/
