@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         Website newWeb = new Website("cnn", rss);
         newWeb.addFeed("Top Stories", "http://rss.cnn.com/rss/cnn_topstories.rss");
         newWeb.addFeed("World", "http://rss.cnn.com/rss/cnn_world.rss");
+
         initFirebase("Websites");
         mDatabaseReference.child(newWeb.getSiteTitle()).setValue(newWeb.getFeeds());
         super.onCreate(savedInstanceState);
