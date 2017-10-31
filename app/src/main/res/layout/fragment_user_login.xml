@@ -34,14 +34,14 @@
                 <EditText
                     android:id="@+id/user_name_edited"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="50dp"
                     android:layout_below="@+id/user_name"
                     android:inputType="textEmailAddress"/>
 
                 <TextView
                     android:id="@+id/email"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="50dp"
                     android:gravity="center_vertical"
                     android:text="Email Address"
                     android:textSize="22sp"
@@ -51,15 +51,14 @@
                 <EditText
                     android:id="@+id/email_edited"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="50dp"
                     android:layout_below="@+id/email"
-                    android:inputType="textEmailAddress"
-                    />
+                    android:inputType="textEmailAddress" />
 
                 <TextView
                     android:id="@+id/pw"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="50dp"
                     android:layout_below="@+id/email_edited"
                     android:gravity="center_vertical"
                     android:text="Password"
@@ -69,7 +68,7 @@
                 <EditText
                     android:id="@+id/pw_edited"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="50dp"
                     android:layout_below="@+id/pw"
                     android:inputType="textPassword"/>
 
@@ -87,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="300dp"
+                    android:layout_marginTop="320dp"
                     android:layout_weight="1"
                     android:scaleType="center"
                     android:text="SIGN IN"
@@ -100,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="300dp"
+                    android:layout_marginTop="320dp"
                     android:layout_weight="1"
                     android:scaleType="center"
                     android:text="SIGN UP"
