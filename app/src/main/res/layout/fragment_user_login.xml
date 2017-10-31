@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="30dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="320dp"
+                    android:layout_marginTop="350dp"
                     android:layout_weight="1"
                     android:scaleType="center"
                     android:text="SIGN IN"
@@ -99,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="320dp"
+                    android:layout_marginTop="350dp"
                     android:layout_weight="1"
                     android:scaleType="center"
                     android:text="SIGN UP"
