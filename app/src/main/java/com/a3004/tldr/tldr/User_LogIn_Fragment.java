@@ -43,9 +43,9 @@ public class User_LogIn_Fragment extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         if(v == signup_button){
-            // sign them up
+            userSignup();
         } else if (v == signin_button){
-            // log them in
+            userSignin();
         }
     }
 
