@@ -37,6 +37,6 @@
 
     </RelativeLayout>
 
-    <include layout="@layout/recycler_view_activity" />
+<!--    <include layout="@layout/recycler_view_activity" /> -->
 
 </android.support.design.widget.CoordinatorLayout>
