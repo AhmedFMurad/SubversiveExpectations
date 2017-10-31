@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.ic_explore:
                         Intent intent0 = new Intent(MainActivity.this, ActivityExplore.class);
                         startActivity(intent0);
+
                         break;
 
                     case R.id.ic_home:
