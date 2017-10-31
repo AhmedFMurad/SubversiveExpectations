@@ -12,7 +12,7 @@ public class ActivityUser extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        setContentView(R.layout.fragment_user_login);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
@@ -39,7 +39,7 @@ public class ActivityUser extends AppCompatActivity{
                         startActivity(intent2);
                         break;
                 }
-                return false;
+                return true;
             }
         });
     }
