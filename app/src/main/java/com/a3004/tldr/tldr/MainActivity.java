@@ -1,5 +1,6 @@
 package com.a3004.tldr.tldr;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -36,13 +37,13 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem = menu.getItem(0);
+        MenuItem menuItem = menu.getItem(1);
         menuItem.setChecked(true);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
-/*               switch (item.getItemId()){
+               switch (item.getItemId()){
                     case R.id.ic_explore:
                         Intent intent0 = new Intent(MainActivity.this, ActivityExplore.class);
                         startActivity(intent0);
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent2 = new Intent(MainActivity.this, ActivityUser.class);
                         startActivity(intent2);
                         break;
-                }*/
+                }
                 return true;
             }
         });
