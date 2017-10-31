@@ -84,11 +84,11 @@ public class User_LogIn_Fragment extends AppCompatActivity implements View.OnCli
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
-                                Toast.makeText(User_LogIn_Fragment.this, "User registered!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(User_LogIn_Fragment.this, "User registered!", Toast.LENGTH_SHORT).show();
                                 Intent intentLoggedIn = new Intent(User_LogIn_Fragment.this, User_AfterLogIn_Fragment.class);
                                 startActivity(intentLoggedIn);
                             } else {
-                                Toast.makeText(User_LogIn_Fragment.this, "An error has occurred, please try again later!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(User_LogIn_Fragment.this, "An error has occurred, please try again later!", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -113,11 +113,11 @@ public class User_LogIn_Fragment extends AppCompatActivity implements View.OnCli
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
-                                Toast.makeText(User_LogIn_Fragment.this, "Logged in!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(User_LogIn_Fragment.this, "Logged in!", Toast.LENGTH_SHORT).show();
                                 Intent intentLoggedIn = new Intent(User_LogIn_Fragment.this, User_AfterLogIn_Fragment.class);
                                 startActivity(intentLoggedIn);
                             } else {
-                                Toast.makeText(User_LogIn_Fragment.this, "An error has occurred, please try again later!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(User_LogIn_Fragment.this, "An error has occurred, please try again later!", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
