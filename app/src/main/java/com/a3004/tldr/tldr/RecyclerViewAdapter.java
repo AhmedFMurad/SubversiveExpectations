@@ -61,7 +61,7 @@ class mViewHolder extends RecyclerView.ViewHolder {
     public mViewHolder(View itemView, final MyItemClickListener mListener) {
         super(itemView);
         this.itemView = itemView;
-        iv = (ImageView) itemView.findViewById(R.id.image_view);
+        iv = (ImageView) itemView.findViewById(R.id.image_view1);
         tv = (TextView) itemView.findViewById(R.id.title);
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

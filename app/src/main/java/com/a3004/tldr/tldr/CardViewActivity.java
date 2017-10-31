@@ -16,9 +16,9 @@ public class CardViewActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.item);
-        articleImage = (ImageView)findViewById(R.id.image_view);
+        articleImage = (ImageView)findViewById(R.id.image_view1);
         articleCategory = (TextView)findViewById(R.id.title);
-        articleText = (TextView)findViewById(R.id.content);
+        articleText = (TextView)findViewById(R.id.content1);
 
         articleImage.setImageResource(R.drawable.pepe1);
         articleCategory.setText("-- Default Category --");

@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent2 = new Intent(MainActivity.this, ActivityUser.class);
                         startActivity(intent2);
                         break;
-
                 }*/
                 return true;
             }
