@@ -4,21 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 public class ActivityHome extends AppCompatActivity {
 
     // --- recycler view part ---
-    private RecyclerView mRecyclerView;
-    private RecyclerViewAdapter adapter;
-    private ArrayList<Article> articles;
+
+    //private RecyclerView mRecyclerView;
+    //private RecyclerViewAdapter adapter;
+    //private ArrayList<Article> articles;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,10 +52,10 @@ public class ActivityHome extends AppCompatActivity {
         //mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         //mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        initData();
-        initView();
+        //initData();
+        //initView();
     }
-
+/*
     // --- initial ArrayList data ---
     private void initData() {
         articles = new ArrayList<>();
@@ -94,4 +90,5 @@ public class ActivityHome extends AppCompatActivity {
             }
         });
     }
+    */
 }
