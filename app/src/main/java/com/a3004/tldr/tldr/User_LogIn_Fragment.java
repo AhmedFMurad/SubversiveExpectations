@@ -1,5 +1,6 @@
 package com.a3004.tldr.tldr;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -33,8 +34,6 @@ public class User_LogIn_Fragment extends AppCompatActivity implements View.OnCli
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         initFirebase();
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_user_login);
 
@@ -44,8 +43,19 @@ public class User_LogIn_Fragment extends AppCompatActivity implements View.OnCli
         emailAddress = (EditText) findViewById(R.id.email_edited);
         password = (EditText) findViewById(R.id.pw_edited);
 
-        signin_button.setOnClickListener(this);
-        signup_button.setOnClickListener(this);
+        signin_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               userSignin();
+            }
+        });
+
+        signup_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userSignup();
+            }
+        });
     }
 
     @Override
@@ -75,6 +85,8 @@ public class User_LogIn_Fragment extends AppCompatActivity implements View.OnCli
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
                                 Toast.makeText(User_LogIn_Fragment.this, "User registered!", Toast.LENGTH_LONG).show();
+                                Intent intentLoggedIn = new Intent(User_LogIn_Fragment.this, User_AfterLogIn_Fragment.class);
+                                startActivity(intentLoggedIn);
                             } else {
                                 Toast.makeText(User_LogIn_Fragment.this, "An error has occurred, please try again later!", Toast.LENGTH_LONG).show();
                             }
@@ -102,6 +114,8 @@ public class User_LogIn_Fragment extends AppCompatActivity implements View.OnCli
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
                                 Toast.makeText(User_LogIn_Fragment.this, "Logged in!", Toast.LENGTH_LONG).show();
+                                Intent intentLoggedIn = new Intent(User_LogIn_Fragment.this, User_AfterLogIn_Fragment.class);
+                                startActivity(intentLoggedIn);
                             } else {
                                 Toast.makeText(User_LogIn_Fragment.this, "An error has occurred, please try again later!", Toast.LENGTH_LONG).show();
                             }

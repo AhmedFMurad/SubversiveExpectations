@@ -1,9 +1,15 @@
 package com.a3004.tldr.tldr;
 
-import android.support.v4.app.Fragment;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 
 
 // after user log in fragment
-public class User_AfterLogIn_Fragment extends Fragment {
-
+public class User_AfterLogIn_Fragment extends AppCompatActivity {
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_user_afterlogin);
+    }
 }
