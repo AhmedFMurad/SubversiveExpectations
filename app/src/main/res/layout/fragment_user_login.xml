@@ -17,67 +17,69 @@
             android:layout_height="400dp">
 
             <RelativeLayout
-                android:orientation="horizontal"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true">
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/user_name"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:id="@+id/user_name"
+                    android:gravity="center_vertical"
                     android:text="User Name"
                     android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:gravity="center_vertical" />
+                    android:textStyle="bold"/>
 
                 <EditText
-                    android:inputType="textEmailAddress"
+                    android:id="@+id/user_name_edited"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:id="@+id/user_name_edited"
-                    android:layout_below="@+id/user_name"/>
+                    android:layout_below="@+id/user_name"
+                    android:inputType="textEmailAddress"/>
 
                 <TextView
+                    android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:id="@+id/email"
+                    android:gravity="center_vertical"
                     android:text="Email Address"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:gravity="center_vertical" />
+                    android:layout_below="@id/user_name_edited"/>
 
                 <EditText
-                    android:inputType="textEmailAddress"
+                    android:id="@+id/email_edited"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:id="@+id/email_edited"
-                    android:layout_below="@+id/user_name"/>
+                    android:layout_below="@+id/email"
+                    android:inputType="textEmailAddress"
+                    />
 
                 <TextView
+                    android:id="@+id/pw"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:id="@+id/pw"
+                    android:layout_below="@+id/email_edited"
+                    android:gravity="center_vertical"
                     android:text="Password"
                     android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:gravity="center_vertical"
-                    android:layout_below="@+id/user_name_edited"/>
+                    android:textStyle="bold"/>
 
                 <EditText
-                    android:inputType="textPassword"
+                    android:id="@+id/pw_edited"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:id="@+id/pw_edited"
-                    android:layout_below="@+id/pw"/>
+                    android:layout_below="@+id/pw"
+                    android:inputType="textPassword"/>
 
             </RelativeLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true">
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/signin_button"
@@ -86,11 +88,11 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="300dp"
+                    android:layout_weight="1"
                     android:scaleType="center"
                     android:text="SIGN IN"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1" />
+                    android:textStyle="bold"/>
 
                 <Button
                     android:id="@+id/signup_button"
@@ -99,11 +101,11 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="300dp"
+                    android:layout_weight="1"
                     android:scaleType="center"
                     android:text="SIGN UP"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1" />
+                    android:textStyle="bold"/>
 
             </LinearLayout>
 
