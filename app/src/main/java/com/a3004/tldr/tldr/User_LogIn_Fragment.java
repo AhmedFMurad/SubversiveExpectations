@@ -18,9 +18,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-
 // user log in fragment
-public class User_LogIn_Fragment extends AppCompatActivity {
+public class User_LogIn_Fragment extends AppCompatActivity implements View.OnClickListener {
     private Button signin_button;
     private Button signup_button;
     private EditText emailAddress;
@@ -45,33 +44,18 @@ public class User_LogIn_Fragment extends AppCompatActivity {
         emailAddress = (EditText) findViewById(R.id.email_edited);
         password = (EditText) findViewById(R.id.pw_edited);
 
-        signin_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(User_LogIn_Fragment.this, "YOU CLICKED SIGN IN", Toast.LENGTH_LONG).show();
-                userSignin();
-            }
-        });
-
-        signup_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(User_LogIn_Fragment.this, "YOU CLICKED SIGN US",Toast.LENGTH_LONG).show();
-                userSignup();
-            }
-        });
+        signin_button.setOnClickListener(this);
+        signup_button.setOnClickListener(this);
     }
 
-   /* @Override
+    @Override
     public void onClick(View v) {
         if(v == signup_button){
-            Toast.makeText(this, "YOU CLICKED SIGN UP", Toast.LENGTH_LONG).show();
             userSignup();
         } else if (v == signin_button){
-            Toast.makeText(this, "YOU CLICKED SIGN IN", Toast.LENGTH_LONG).show();
             userSignin();
         }
-    }*/
+    }
 
     private void userSignup(){
         String email = emailAddress.getText().toString().trim();
