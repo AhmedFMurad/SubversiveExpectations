@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -25,11 +26,18 @@ public class User_LogIn_Fragment extends AppCompatActivity implements View.OnCli
     private EditText password;
     private EditText username;
     private FirebaseAuth mFirebaseAuth;
+    public void initFirebase(){
+        FirebaseApp.initializeApp(this);
+        mFirebaseAuth = FirebaseAuth.getInstance();
+    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        initFirebase();
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_user_login);
-        mFirebaseAuth = FirebaseAuth.getInstance();
+
         signin_button = (Button) findViewById(R.id.signin_button);
         signup_button = (Button) findViewById(R.id.signup_button);
         username = (EditText) findViewById(R.id.user_name_edited);

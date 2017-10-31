@@ -15,22 +15,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    private FirebaseDatabase mFirebaseDatabase;
+    /*private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
 
     public void initFirebase(String table){
         FirebaseApp.initializeApp(this);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference(table);
-    }
+    }*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Map<String,String> rss = new HashMap<>();
+        /*Map<String,String> rss = new HashMap<>();
         Website newWeb = new Website("cnn", rss);
         newWeb.addFeed("Top Stories", "http://rss.cnn.com/rss/cnn_topstories.rss");
         newWeb.addFeed("World", "http://rss.cnn.com/rss/cnn_world.rss");
         initFirebase("Websites");
-        mDatabaseReference.child(newWeb.getSiteTitle()).setValue(newWeb.getFeeds());
+        mDatabaseReference.child(newWeb.getSiteTitle()).setValue(newWeb.getFeeds());*/
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
