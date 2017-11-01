@@ -2,14 +2,21 @@ package com.a3004.tldr.tldr;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 
 
 public class ActivityUser extends AppCompatActivity{
@@ -24,6 +31,23 @@ public class ActivityUser extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_user_beforelogin);
         initFirebase();
+        if(mFirebaseAuth.getCurrentUser() == null) {
+            Task<AuthResult> task = mFirebaseAuth.signInAnonymously();
+            task.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    FirebaseUser user = mFirebaseAuth.getCurrentUser();
+                    // add to the database
+                }
+            });
+        } else if(mFirebaseAuth.getCurrentUser() != null) {
+            for (UserInfo user : FirebaseAuth.getInstance().getCurrentUser().getProviderData()) {
+                if (user.getProviderId().equals("password")) {
+                    Intent intentIsLoggedIn = new Intent(ActivityUser.this, User_AfterLogIn_Fragment.class);
+                    startActivity(intentIsLoggedIn);
+                }
+            }
+        }
         goLogin = (Button) findViewById(R.id.login_button);
         goLogin.setOnClickListener(new View.OnClickListener() {
             @Override
