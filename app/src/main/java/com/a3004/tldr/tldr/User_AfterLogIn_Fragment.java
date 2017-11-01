@@ -36,4 +36,8 @@ public class User_AfterLogIn_Fragment extends AppCompatActivity {
             }
         });
     }
+
+    public void userLogout(){
+
+    }
 }
