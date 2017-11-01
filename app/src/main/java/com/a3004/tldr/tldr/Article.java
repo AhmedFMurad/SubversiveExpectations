@@ -37,7 +37,6 @@ public class Article {
         this.articleDescription = articleDescription;
         this.articleURL = articleURL;
         this.articleTitle = articleTitle;
-        //this.articleID++;
     }
 
     public void displayText(){
