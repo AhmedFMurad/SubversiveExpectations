@@ -1,6 +1,5 @@
 package com.a3004.tldr.tldr;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -19,7 +18,16 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+
+import java.net.URL;
 import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 public class ActivityHome extends AppCompatActivity {
 
@@ -32,23 +40,19 @@ public class ActivityHome extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
-    private Category cat;
     public void initFirebase(){
         FirebaseApp.initializeApp(this);
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference("users");
     }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        cat = new Category();
         // POPULATING THE DATABASE WITH ARTICLES
         FirebaseApp.initializeApp(this);
-        cat.parseXML("http://rss.nytimes.com/services/xml/rss/nyt/World.xml");
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = mFirebaseDatabase.getReference("categories");
-        mDatabaseReference.child("articles").setValue(cat.getArticles().size());
+        parseXML("http://rss.nytimes.com/services/xml/rss/nyt/World.xml");
         initFirebase();
         if(mFirebaseAuth.getCurrentUser() == null) {
             Task<AuthResult> task = mFirebaseAuth.signInAnonymously();
@@ -134,4 +138,46 @@ public class ActivityHome extends AppCompatActivity {
         });
     }
     */
+public void parseXML(String site){
+    try{
+            /* Make connection with the url*/
+        URL url = new URL(site);
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        DocumentBuilder db = dbf.newDocumentBuilder();
+        Document doc = db.parse(new InputSource(url.openStream()));
+        Toast.makeText(this, "3", Toast.LENGTH_LONG).show();
+        doc.getDocumentElement().normalize();
+
+        NodeList nodeList = doc.getElementsByTagName("item");
+        //get titles of articles
+        for (int i = 0; i < nodeList.getLength(); i++){
+            Element element = (Element) nodeList.item(i);
+
+            //get titles
+            NodeList title = element.getElementsByTagName("title");
+            Element titleLine = (Element) title.item(0);
+            String titleString = titleLine.getTextContent();
+
+            //get links
+            NodeList link = element.getElementsByTagName("link");
+            Element linkLine = (Element) link.item(0);
+            String linkString = linkLine.getTextContent();
+
+
+            //getting descriptions
+            NodeList description = element.getElementsByTagName("description");
+            Element descLine = (Element) description.item(0);
+            String descString = descLine.getTextContent();
+            mFirebaseDatabase = FirebaseDatabase.getInstance();
+            mDatabaseReference = mFirebaseDatabase.getReference("categories");
+            mDatabaseReference.child("articles").setValue("1");
+            mDatabaseReference.child("articles").child(linkString).child("title").setValue(titleString);
+            mDatabaseReference.child("articles").child(linkString).child("desc").setValue(descString);
+            Toast.makeText(this, "article added "+i, Toast.LENGTH_SHORT).show();
+        }
+    } catch (Exception e){
+        e.printStackTrace();
+    }
+
+}
 }
