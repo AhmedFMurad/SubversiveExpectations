@@ -15,12 +15,20 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class ActivityExplore extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseReference;
     public void initFirebase(){
         FirebaseApp.initializeApp(this);
         mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference("users");
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +40,11 @@ public class ActivityExplore extends AppCompatActivity {
             task.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    Toast.makeText(ActivityExplore.this, "Anon account done", Toast.LENGTH_SHORT).show();
                     FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                    // add to the database
+                    ArrayList<String> cats = new ArrayList<>();
+                    cats.add("");
+                    Users tldrUser = new Users("", user.getUid(),cats , 0, 10, 0);
+                    mDatabaseReference.child(user.getUid()).setValue(tldrUser);
                 }
             });
         }

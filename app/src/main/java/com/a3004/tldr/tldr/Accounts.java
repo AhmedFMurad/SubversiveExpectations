@@ -7,45 +7,19 @@ import java.security.NoSuchAlgorithmException;
 import static android.R.attr.data;
 
 public class Accounts extends Users {
-    private String password;
+// NO LONGER IN USE.
     protected int points;
     protected int[] prizes;
     protected int amountOfPrizes;
-    // This might be needed in main activity instead..
-    private String md5(String s) {
-        try {
-            // Create MD5 Hash
-            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
-            digest.update(s.getBytes());
-            byte messageDigest[] = digest.digest();
-
-            // Create Hex String
-            StringBuffer hexString = new StringBuffer();
-            for (int i=0; i<messageDigest.length; i++)
-                hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
-            return hexString.toString();
-
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
 
     public Accounts(){
 
     }
-    public boolean login(String username, String password){
-        // Check database for username in if statement below
-        if(true){
-            // Get user's password from the database
-            if(md5(password).equals(this.password)){
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
+
+    public Accounts(int points, int[] prizes, int amountOfPrizes) {
+        this.points = points;
+        this.prizes = prizes;
+        this.amountOfPrizes = amountOfPrizes;
     }
 
     public boolean chooseNewUsername(String newUsername){

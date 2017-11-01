@@ -8,7 +8,7 @@ public class Article {
     private String articleImage;
     private String articleURL;
     private String articleCategory;
-    private static int articleID = 0;
+    //private static int articleID = 0;
     private String articleTitle;
     private String articleDescription;
     private ArrayList<Summary> summaries;
@@ -18,25 +18,26 @@ public class Article {
     }
     public Article(String articleTitle, String articleText, String articleImage, String articleURL,
                    String articleCategory) {
+        this.articleTitle = articleTitle;
         this.articleText = articleText;
         this.articleImage = articleImage;
         this.articleURL = articleURL;
         this.articleCategory = articleCategory;
-        this.articleID++;
+        //this.articleID++;
         //
     }
 
-    public Article(String articleCategory, String articleText, int articleID) {
+    public Article(String articleCategory, String articleText) {
         this.articleCategory = articleCategory;
         this.articleText = articleText;
-        this.articleID = articleID;
+        //this.articleID = articleID;
     }
 
     public Article(String articleURL, String articleTitle, String articleDescription){
         this.articleDescription = articleDescription;
         this.articleURL = articleURL;
         this.articleTitle = articleTitle;
-        this.articleID++;
+        //this.articleID++;
     }
 
     public void displayText(){
@@ -64,10 +65,16 @@ public class Article {
     public String getArticleURL() { return articleURL; }
     public String getArticleImage() { return articleImage; }
     public String getArticleCategory() { return articleCategory; }
-    public int getArticleID() { return articleID; }
+    //public int getArticleID() { return articleID; }
     public ArrayList<Summary> getAllSummaries(){
         return this.summaries;
     }
 
+    public String getArticleTitle() {
+        return articleTitle;
+    }
 
+    public String getArticleDescription() {
+        return articleDescription;
+    }
 }

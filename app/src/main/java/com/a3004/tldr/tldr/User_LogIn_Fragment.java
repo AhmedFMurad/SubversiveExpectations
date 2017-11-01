@@ -24,6 +24,8 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 // user log in fragment
@@ -34,9 +36,13 @@ public class User_LogIn_Fragment extends AppCompatActivity implements View.OnCli
     private EditText password;
     private EditText username;
     private FirebaseAuth mFirebaseAuth;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseReference;
     public void initFirebase(){
         FirebaseApp.initializeApp(this);
         mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference("users");
     }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -122,7 +128,7 @@ public class User_LogIn_Fragment extends AppCompatActivity implements View.OnCli
     private void userSignup(){
         final String email = emailAddress.getText().toString().trim();
         final String pass = password.getText().toString().trim();
-        String user = username.getText().toString().trim();
+        final String userN = username.getText().toString().trim();
 
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this, "Please enter your email!", Toast.LENGTH_LONG).show();
@@ -151,6 +157,8 @@ public class User_LogIn_Fragment extends AppCompatActivity implements View.OnCli
                     if(task.isSuccessful()) {
                         Toast.makeText(User_LogIn_Fragment.this, "User registered!", Toast.LENGTH_SHORT).show();
                         mFirebaseAuth.signInWithEmailAndPassword(email, pass);
+                        FirebaseUser user = mFirebaseAuth.getCurrentUser();
+                        mDatabaseReference.child(user.getUid()).child("username").setValue(userN);
                         Intent intentLoggedIn = new Intent(User_LogIn_Fragment.this, User_AfterLogIn_Fragment.class);
                         startActivity(intentLoggedIn);
                     } else {
