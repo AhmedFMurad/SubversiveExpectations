@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    app:srcCompat="@drawable/pepe1" />
+                    app:srcCompat="@drawable/business_icon" />
 
                 <TextView
                     android:id="@+id/title1"
@@ -57,8 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/title1"
-                    android:text="artical content \n blablabla blabla blablabla
-                blablabla blablabla blablabla" />
+                    android:text="shows article content" />
 
             </RelativeLayout>
 
@@ -92,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    app:srcCompat="@drawable/pepe1" />
+                    app:srcCompat="@drawable/tech_icon" />
 
                 <TextView
                     android:id="@+id/title2"
@@ -111,8 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/title2"
-                    android:text="artical content \n blablabla blabla blablabla
-                blablabla blablabla blablabla" />
+                    android:text="shows another article content" />
 
             </RelativeLayout>
 
