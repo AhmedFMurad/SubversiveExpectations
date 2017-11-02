@@ -1,21 +1,19 @@
-package com.a3004.tldr.tldr;
-
+/*
 import android.app.Activity;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.a3004.tldr.tldr.Article;
+import com.a3004.tldr.tldr.R;
 
 import java.util.List;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
+package com.a3004.tldr.tldr;
 
 public class CardViewActivity extends ArrayAdapter<String> {
     private Activity context;
@@ -60,5 +58,7 @@ public class CardViewActivity extends ArrayAdapter<String> {
         articleImage.setImageResource(R.drawable.pepe1);
         articleCategory.setText("-- Default Category --");
         articleText.setText("-- Default Text --");
-    }*/
-}
+    }
+}*/
+
+
