@@ -1,7 +1,6 @@
 package com.a3004.tldr.tldr;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,61 +8,41 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
-public class CardViewActivity extends BaseAdapter {
+public class CardViewActivity extends ArrayAdapter<String> {
+    private Activity context;
+    private List<Article> articles;
 
-    private Context context;
-    private ArrayList<Article> articles;
-
-    public CardViewActivity(Context context, ArrayList<Article> articles) {
+    public CardViewActivity(Activity context, List<Article> articles){
+        super(context, R.layout.item);
         this.context = context;
         this.articles = articles;
     }
 
-
+    @NonNull
     @Override
-    public int getCount() {
-        return articles.size();
-    }
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        LayoutInflater inflater = context.getLayoutInflater();
 
-    @Override
-    public Object getItem(int position) {
-        return articles.get(position);
-    }
+        View cardListView = inflater.inflate(R.layout.item, null, true);
+        TextView textViewTitle = (TextView) cardListView.findViewById(R.id.title1);
+        TextView textViewContent = (TextView) cardListView.findViewById(R.id.content1);
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-
-        if(convertView == null){
-            convertView = View.inflate(context, R.layout.item, null);
-        }
-
-        TextView title = (TextView) convertView.findViewById(R.id.title);
-        TextView content = (TextView) convertView.findViewById(R.id.content);
         Article article = articles.get(position);
 
-        title.setText(article.getArticleTitle());
-        content.setText(article.getArticleDescription());
+        textViewTitle.setText(article.getArticleTitle());
+        textViewContent.setText(article.getArticleDescription());
 
-
-        return convertView;
+        return cardListView;
     }
-
 
     /*ImageView articleImage;
     TextView articleCategory;
