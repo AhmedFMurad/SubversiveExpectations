@@ -76,7 +76,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:scaleType="center"
-                    app:srcCompat="@drawable/ic_add_alert_black_18dp"/>
+                    app:srcCompat="@drawable/ic_whatshot_black_18dp"/>
 
                 <Switch
                     android:id="@+id/cat1_switch"
@@ -103,7 +103,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:scaleType="center"
-                    app:srcCompat="@drawable/ic_add_alert_black_18dp"/>
+                    app:srcCompat="@drawable/ic_notifications_active_black_18dp"/>
 
                 <Switch
                     android:id="@+id/cat2_switch"
@@ -130,7 +130,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:scaleType="center"
-                    app:srcCompat="@drawable/ic_add_alert_black_18dp"/>
+                    app:srcCompat="@drawable/ic_notifications_active_black_18dp"/>
 
                 <Switch
                     android:id="@+id/cat3_switch"

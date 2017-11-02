@@ -13,8 +13,8 @@
 
         <ListView
             android:id="@+id/cardList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="445dp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -22,10 +22,8 @@
             tools:layout_constraintLeft_creator="1"
             tools:layout_constraintRight_creator="1"
             tools:layout_constraintTop_creator="1"
-            android:layout_marginBottom="50dp"
             android:divider="@null"
-            android:dividerHeight="0dp"
-            />
+            android:dividerHeight="0dp" />
 
         <RelativeLayout
             android:id="@+id/bottomBar"
@@ -56,7 +54,5 @@
         </RelativeLayout>
 
     </android.support.constraint.ConstraintLayout>
-
-    <!--    <include layout="@layout/recycler_view_activity" /> -->
 
 </android.support.design.widget.CoordinatorLayout>
