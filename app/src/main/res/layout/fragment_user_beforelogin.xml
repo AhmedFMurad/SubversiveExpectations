@@ -13,6 +13,7 @@
 
         <Button
             android:id="@+id/login_button"
+            style="@android:style/Widget.Material.Button.Colored"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_alignParentTop="true"
@@ -20,7 +21,7 @@
             android:elevation="0dp"
             android:text="SIGN IN / SIGN UP"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

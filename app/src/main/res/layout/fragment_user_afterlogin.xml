@@ -36,12 +36,12 @@
                 android:id="@+id/switch_notification"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_toRightOf="@+id/notification_icon"
-                android:text="Notification"
                 android:layout_above="@+id/points_icon"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_toRightOf="@+id/notification_icon"
+                android:gravity="center_vertical"
+                android:text="Notification"/>
 
             <ImageView
                 android:id="@+id/points_icon"
@@ -80,6 +80,7 @@
 
             <Button
                 android:id="@+id/logout_button"
+                style="@android:style/Widget.Material.Button.Colored"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_alignParentBottom="true"
@@ -87,7 +88,7 @@
                 android:layout_marginTop="263dp"
                 android:text="LOG OUT"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
         </RelativeLayout>
 

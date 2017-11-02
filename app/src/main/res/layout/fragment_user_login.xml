@@ -82,6 +82,7 @@
 
                 <Button
                     android:id="@+id/signin_button"
+                    style="@android:style/Widget.Material.Button.Colored"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -95,6 +96,7 @@
 
                 <Button
                     android:id="@+id/signup_button"
+                    style="@android:style/Widget.Material.Button.Colored"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
