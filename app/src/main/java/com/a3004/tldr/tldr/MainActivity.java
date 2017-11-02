@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
     }*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Intent intent0 = new Intent(MainActivity.this, ActivityHome.class);
-        //startActivity(intent0);
-        //finish();
+        Intent intent0 = new Intent(MainActivity.this, ActivityHome.class);
+        startActivity(intent0);
+        finish();
         /*Map<String,String> rss = new HashMap<>();
         Website newWeb = new Website("cnn", rss);
         newWeb.addFeed("Top Stories", "http://rss.cnn.com/rss/cnn_topstories.rss");
