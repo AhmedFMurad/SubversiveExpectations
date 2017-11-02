@@ -38,7 +38,7 @@ public class CardViewActivity extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if(convertView == null){
-            convertView = View.inflate(context, R.layout.item, null);
+            convertView = View.inflate(context, R.layout.item2, null);
         }
 
         TextView title = (TextView) convertView.findViewById(R.id.title);
