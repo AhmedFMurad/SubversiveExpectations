@@ -13,12 +13,13 @@
 
         <TextView
             android:id="@+id/user_name"
-            android:layout_width="match_parent"
+            android:layout_width="320dp"
             android:layout_height="60dp"
             android:layout_alignParentTop="true"
             android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
             android:gravity="center_vertical"
-            android:text="   USER NAME" />
+            android:text="USER NAME" />
 
         <RelativeLayout
             android:layout_width="match_parent"
