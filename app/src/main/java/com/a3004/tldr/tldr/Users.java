@@ -5,11 +5,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class Users {
     protected String username;
     protected String id;
-    protected ArrayList<String> preferedCategories;
+    protected Map<String,Boolean> preferedCategories;
     protected int amountOfCategories;
     protected int points;
     //protected ArrayList<String> prizes;
@@ -27,12 +28,13 @@ public class Users {
         this.amountOfPrizes = amountOfPrizes;
     }
 
-    public Users(String username, String id) {
+    public Users(String username, String id, Map<String,Boolean> preferedCategories) {
         this.username = username;
         this.id = id;
+        this.preferedCategories = preferedCategories;
     }
 
-    public Users(String username, String id, ArrayList<String> preferedCategories, int amountOfCategories, int points, int amountOfPrizes) {
+    public Users(String username, String id, Map<String,Boolean> preferedCategories, int amountOfCategories, int points, int amountOfPrizes) {
         this.username = username;
         this.id = id;
         this.preferedCategories = preferedCategories;
