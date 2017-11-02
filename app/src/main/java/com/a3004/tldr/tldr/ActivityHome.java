@@ -28,6 +28,9 @@ public class ActivityHome extends AppCompatActivity {
     private ListView listview;
     private ArrayList<Article> articles;
 
+    private final String NYTFeed = "http://rss.nytimes.com/services/xml/rss/nyt/Education.xml";
+    private final String NYTFeedtoJSON = "https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FEducation.xml";
+
     public void initFirebase(){
         FirebaseApp.initializeApp(this);
         mFirebaseAuth = FirebaseAuth.getInstance();
