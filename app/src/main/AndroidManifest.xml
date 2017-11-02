@@ -10,7 +10,7 @@
         android:roundIcon="@drawable/pepe2"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ActivityHome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -24,7 +24,7 @@
             <action android:name="android.intent.action.MAIN"/>
 
         </activity>
-        <activity android:name=".ActivityHome">
+        <activity android:name=".MainActivity">
             <action android:name="android.intent.action.MAIN"/>
         </activity>
         <activity android:name=".User_LogIn_Fragment">
