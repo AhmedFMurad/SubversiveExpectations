@@ -3,20 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityExplore">
+    tools:context=".ActivityExplore"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="460dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true">
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottomBar"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="13dp">
 
             <TextView
                 android:id="@+id/category_title"
@@ -30,9 +31,9 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Button"
                 android:textColor="?attr/colorPrimaryDark"
                 android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -44,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="center"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/world_icon" /> <!-- replace by new image later -->
+                    app:srcCompat="@drawable/world_icon" /> <! replace by new image later --><!--
 
                 <ImageButton
                     android:id="@+id/category_image_2"
@@ -53,7 +54,7 @@
                     android:layout_toRightOf="@+id/category_image_1"
                     android:scaleType="center"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/business_icon" /> <!-- replace by new image later -->
+                    app:srcCompat="@drawable/business_icon" /> <! replace by new image later --><!--
 
                 <ImageButton
                     android:id="@+id/category_image_3"
@@ -62,8 +63,87 @@
                     android:layout_toRightOf="@+id/category_image_2"
                     android:scaleType="center"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/tech_icon" /> <!-- replace by new image later -->
-            </LinearLayout>
+                    app:srcCompat="@drawable/tech_icon" /> <! replace by new image later --><!--
+            </LinearLayout>-->
+            <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/category_title">
+
+                <ImageView
+                    android:id="@+id/cat1_icon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:scaleType="center"
+                    app:srcCompat="@drawable/ic_add_alert_black_18dp"/>
+
+                <Switch
+                    android:id="@+id/cat1_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/cat1_icon"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/cat1_icon"
+                    android:gravity="center_vertical"
+                    android:text="World"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/relativeLayout2">
+
+                <ImageView
+                    android:id="@+id/cat2_icon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:scaleType="center"
+                    app:srcCompat="@drawable/ic_add_alert_black_18dp"/>
+
+                <Switch
+                    android:id="@+id/cat2_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/cat2_icon"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/cat2_icon"
+                    android:gravity="center_vertical"
+                    android:text="Technology"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/relativeLayout">
+
+                <ImageView
+                    android:id="@+id/cat3_icon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:scaleType="center"
+                    app:srcCompat="@drawable/ic_add_alert_black_18dp"/>
+
+                <Switch
+                    android:id="@+id/cat3_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/cat3_icon"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/cat3_icon"
+                    android:gravity="center_vertical"
+                    android:text="Business"/>
+
+            </RelativeLayout>
 
         </RelativeLayout>
 
