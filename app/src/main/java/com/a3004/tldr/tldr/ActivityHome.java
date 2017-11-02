@@ -16,6 +16,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ActivityHome extends AppCompatActivity {
 
@@ -46,8 +48,10 @@ public class ActivityHome extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                    ArrayList<String> cats = new ArrayList<>();
-                    cats.add("");
+                    Map<String,Boolean> cats = new HashMap<>();
+                    cats.put("world", false);
+                    cats.put("business", false);
+                    cats.put("technology", false);
                     Users tldrUser = new Users("", user.getUid(),cats , 0, 10, 0);
                     mDatabaseReference.child(user.getUid()).setValue(tldrUser);
                 }
