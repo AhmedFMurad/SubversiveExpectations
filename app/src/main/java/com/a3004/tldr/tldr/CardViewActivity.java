@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
 
@@ -43,6 +44,19 @@ public class CardViewActivity extends BaseAdapter {
 
         TextView title = (TextView) convertView.findViewById(R.id.title);
         TextView content = (TextView) convertView.findViewById(R.id.content);
+        ImageView image = (ImageView) convertView.findViewById(R.id.image_view);
+
+        if(position == 0) {
+            image.setImageResource(R.drawable.obama);
+        } else if(position == 1) {
+            image.setImageResource(R.drawable.trump);
+        } else if(position == 3) {
+            image.setImageResource(R.drawable.trump_putin);
+        } else if(position == 4) {
+            image.setImageResource(R.drawable.pepe1);
+        } else if(position == 2) {
+            image.setImageResource(R.drawable.pepe2);
+        }
         Article article = articles.get(position);
 
         title.setText(article.getArticleTitle());
