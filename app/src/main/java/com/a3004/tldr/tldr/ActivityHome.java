@@ -28,11 +28,12 @@ public class ActivityHome extends AppCompatActivity {
 
     //private RecyclerView mRecyclerView;
     //private RecyclerViewAdapter adapter;
-    //private ArrayList<Article> articles;
 
     private FirebaseAuth mFirebaseAuth;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
+
+
     public void initFirebase(){
         FirebaseApp.initializeApp(this);
         mFirebaseAuth = FirebaseAuth.getInstance();
