@@ -1,4 +1,5 @@
 package com.a3004.tldr.tldr;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -15,7 +17,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ActivityHome extends AppCompatActivity {
 
@@ -46,8 +51,10 @@ public class ActivityHome extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                    ArrayList<String> cats = new ArrayList<>();
-                    cats.add("");
+                    Map<String,Boolean> cats = new HashMap<>();
+                    cats.put("world", false);
+                    cats.put("business", false);
+                    cats.put("technology", false);
                     Users tldrUser = new Users("", user.getUid(),cats , 0, 10, 0);
                     mDatabaseReference.child(user.getUid()).setValue(tldrUser);
                 }
