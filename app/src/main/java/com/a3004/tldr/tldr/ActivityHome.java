@@ -73,8 +73,8 @@ public class ActivityHome extends AppCompatActivity {
                         break;
 
                     case R.id.ic_home:
-                        Intent intent1 = new Intent(ActivityHome.this, ActivityHome.class);
-                        startActivity(intent1);
+                       // Intent intent1 = new Intent(ActivityHome.this, ActivityHome.class);
+                       // startActivity(intent1);
                         break;
 
                     case R.id.ic_user:

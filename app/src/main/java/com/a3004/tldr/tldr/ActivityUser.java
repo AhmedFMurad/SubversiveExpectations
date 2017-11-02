@@ -90,8 +90,8 @@ public class ActivityUser extends AppCompatActivity{
                         break;
 
                     case R.id.ic_user:
-                        Intent intent2 = new Intent(ActivityUser.this, ActivityUser.class);
-                        startActivity(intent2);
+                       // Intent intent2 = new Intent(ActivityUser.this, ActivityUser.class);
+                       // startActivity(intent2);
                         break;
                 }
                 return true;
