@@ -11,12 +11,22 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 public class Category {
+    private String title;
     private ArrayList<Article> articles = new ArrayList<>();
 
     public ArrayList<Article> getArticles() { return this.articles; }
 
     public Category() {
 
+    }
+
+    public Category(String title, ArrayList<Article> articles) {
+        this.title = title;
+        this.articles = articles;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public void parseXML(String site){
