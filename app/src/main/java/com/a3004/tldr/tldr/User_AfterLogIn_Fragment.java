@@ -81,8 +81,8 @@ public class User_AfterLogIn_Fragment extends AppCompatActivity {
                         break;
 
                     case R.id.ic_user:
-                        Intent intent2 = new Intent(User_AfterLogIn_Fragment.this, ActivityUser.class);
-                        startActivity(intent2);
+                        //Intent intent2 = new Intent(User_AfterLogIn_Fragment.this, ActivityUser.class);
+                        //startActivity(intent2);
                         break;
                 }
                 return true;
