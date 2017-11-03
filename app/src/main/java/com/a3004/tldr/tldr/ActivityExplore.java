@@ -47,7 +47,19 @@ public class ActivityExplore extends AppCompatActivity {
         switchTech = (Switch) findViewById(R.id.cat2_switch);
         switchBusiness = (Switch) findViewById(R.id.cat3_switch);
         if(mFirebaseAuth.getCurrentUser() == null) {
-            anonymousLogin();
+            Task<AuthResult> task = mFirebaseAuth.signInAnonymously();
+            task.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    FirebaseUser user = mFirebaseAuth.getCurrentUser();
+                    Map<String,Boolean> cats = new HashMap<>();
+                    cats.put("world", false);
+                    cats.put("business", false);
+                    cats.put("technology", false);
+                    Users tldrUser = new Users("", user.getUid(),cats , 0, 10, 0);
+                    mDatabaseReference.child(user.getUid()).setValue(tldrUser);
+                }
+            });
         }
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
@@ -120,10 +132,6 @@ public class ActivityExplore extends AppCompatActivity {
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(!dataSnapshot.exists()){
-                    mFirebaseAuth.signOut();
-                    anonymousLogin();
-                }
                 switchBusiness.setChecked((Boolean) dataSnapshot.child("preferedCategories").child("business").getValue());
                 switchTech.setChecked((Boolean) dataSnapshot.child("preferedCategories").child("technology").getValue());
                 switchWorld.setChecked((Boolean) dataSnapshot.child("preferedCategories").child("world").getValue());
@@ -132,21 +140,6 @@ public class ActivityExplore extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
-    }
-    public void anonymousLogin(){
-        Task<AuthResult> task = mFirebaseAuth.signInAnonymously();
-        task.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                Map<String,Boolean> cats = new HashMap<>();
-                cats.put("world", false);
-                cats.put("business", false);
-                cats.put("technology", false);
-                Users tldrUser = new Users("", user.getUid(),cats , 0, 10, 0);
-                mDatabaseReference.child(user.getUid()).setValue(tldrUser);
             }
         });
     }

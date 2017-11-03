@@ -1,19 +1,12 @@
 package com.a3004.tldr.tldr;
 
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 public class Users {
     protected String username;
     protected String id;
     protected Map<String,Boolean> preferedCategories;
-    protected int amountOfCategories;
     protected int points;
-    //protected ArrayList<String> prizes;
     protected int amountOfPrizes;
 
     public Users() {
@@ -23,7 +16,6 @@ public class Users {
     public Users(String username, String id, int amountOfCategories, int points, int amountOfPrizes) {
         this.username = username;
         this.id = id;
-        this.amountOfCategories = amountOfCategories;
         this.points = points;
         this.amountOfPrizes = amountOfPrizes;
     }
@@ -38,7 +30,6 @@ public class Users {
         this.username = username;
         this.id = id;
         this.preferedCategories = preferedCategories;
-        this.amountOfCategories = amountOfCategories;
         this.points = points;
         this.amountOfPrizes = amountOfPrizes;
     }
