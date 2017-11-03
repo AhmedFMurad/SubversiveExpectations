@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +53,7 @@ public class User_AfterLogIn_Fragment extends AppCompatActivity {
         Button logout = (Button) findViewById(R.id.logout_button);
         usernameText = (TextView) findViewById(R.id.user_name);
         myPoints = (TextView) findViewById(R.id.points_show);
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +91,8 @@ public class User_AfterLogIn_Fragment extends AppCompatActivity {
                 return true;
             }
         });
+
+
     }
 
     @Override

@@ -7,18 +7,19 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
-
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
+import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,31 +27,27 @@ public class ActivityExplore extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
+    private FirebaseUser user;
+    Switch switchTech;
+    Switch switchBusiness;
+    Switch switchWorld;
     public void initFirebase(){
         FirebaseApp.initializeApp(this);
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = mFirebaseDatabase.getReference("users");
+        user = mFirebaseAuth.getCurrentUser();
+        mDatabaseReference = mFirebaseDatabase.getReference("users").child(user.getUid());
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore);
         initFirebase();
+        switchWorld = (Switch) findViewById(R.id.cat1_switch);
+        switchTech = (Switch) findViewById(R.id.cat2_switch);
+        switchBusiness = (Switch) findViewById(R.id.cat3_switch);
         if(mFirebaseAuth.getCurrentUser() == null) {
-            Task<AuthResult> task = mFirebaseAuth.signInAnonymously();
-            task.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                    Map<String,Boolean> cats = new HashMap<>();
-                    cats.put("world", false);
-                    cats.put("business", false);
-                    cats.put("technology", false);
-                    Users tldrUser = new Users("", user.getUid(),cats , 0, 10, 0);
-                    mDatabaseReference.child(user.getUid()).setValue(tldrUser);
-                }
-            });
+            anonymousLogin();
         }
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
@@ -78,6 +75,78 @@ public class ActivityExplore extends AppCompatActivity {
                         break;
                 }
                 return true;
+            }
+        });
+
+        switchWorld.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    mDatabaseReference.child("preferedCategories").child("world").setValue(true);
+                } else {
+                    mDatabaseReference.child("preferedCategories").child("world").setValue(false);
+                }
+            }
+        });
+
+        switchTech.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    mDatabaseReference.child("preferedCategories").child("technology").setValue(true);
+                } else {
+                    mDatabaseReference.child("preferedCategories").child("technology").setValue(false);
+                }
+            }
+        });
+
+        switchBusiness.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    mDatabaseReference.child("preferedCategories").child("business").setValue(true);
+                } else {
+                    mDatabaseReference.child("preferedCategories").child("business").setValue(false);
+                }
+            }
+        });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(!dataSnapshot.exists()){
+                    mFirebaseAuth.signOut();
+                    anonymousLogin();
+                }
+                switchBusiness.setChecked((Boolean) dataSnapshot.child("preferedCategories").child("business").getValue());
+                switchTech.setChecked((Boolean) dataSnapshot.child("preferedCategories").child("technology").getValue());
+                switchWorld.setChecked((Boolean) dataSnapshot.child("preferedCategories").child("world").getValue());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+    public void anonymousLogin(){
+        Task<AuthResult> task = mFirebaseAuth.signInAnonymously();
+        task.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                FirebaseUser user = mFirebaseAuth.getCurrentUser();
+                Map<String,Boolean> cats = new HashMap<>();
+                cats.put("world", false);
+                cats.put("business", false);
+                cats.put("technology", false);
+                Users tldrUser = new Users("", user.getUid(),cats , 0, 10, 0);
+                mDatabaseReference.child(user.getUid()).setValue(tldrUser);
             }
         });
     }
