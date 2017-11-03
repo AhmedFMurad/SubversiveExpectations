@@ -6,4 +6,5 @@ package com.a3004.tldr.tldr;
 
 public class Class {
     //comment
+    //comment2
 }
