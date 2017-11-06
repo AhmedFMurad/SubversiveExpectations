@@ -17,8 +17,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.prof.rssparser.Parser;
-import com.prof.rssparser.Article;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,7 +31,6 @@ public class ActivityHome extends AppCompatActivity {
     private ListView listview;
     private ArrayList<Article> articles;
     private final String url = "http://rss.nytimes.com/services/xml/rss/nyt/Education.xml";
-
 
 
     public void initFirebase(){
