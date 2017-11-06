@@ -15,6 +15,9 @@ public class Category {
     private ArrayList<Article> articles = new ArrayList<>();
 
     public ArrayList<Article> getArticles() { return this.articles; }
+    public String getTitle() {
+        return title;
+    }
 
     public Category() {
 
@@ -25,9 +28,7 @@ public class Category {
         this.articles = articles;
     }
 
-    public String getTitle() {
-        return title;
-    }
+
 
     public void parseXML(String site){
         try{
