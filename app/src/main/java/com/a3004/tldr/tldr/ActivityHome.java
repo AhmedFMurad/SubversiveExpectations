@@ -17,6 +17,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.prof.rssparser.Parser;
+import com.prof.rssparser.Article;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,9 +32,9 @@ public class ActivityHome extends AppCompatActivity {
     private CardViewActivity cardAdapter;
     private ListView listview;
     private ArrayList<Article> articles;
+    private final String url = "http://rss.nytimes.com/services/xml/rss/nyt/Education.xml";
 
-    private final String NYTFeed = "http://rss.nytimes.com/services/xml/rss/nyt/Education.xml";
-    private final String NYTFeedtoJSON = "https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FEducation.xml";
+
 
     public void initFirebase(){
         FirebaseApp.initializeApp(this);
