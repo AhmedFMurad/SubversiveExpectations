@@ -132,9 +132,9 @@ public class ActivityExplore extends AppCompatActivity {
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                switchBusiness.setChecked((Boolean) dataSnapshot.child("preferedCategories").child("business").getValue());
-                switchTech.setChecked((Boolean) dataSnapshot.child("preferedCategories").child("technology").getValue());
-                switchWorld.setChecked((Boolean) dataSnapshot.child("preferedCategories").child("world").getValue());
+                switchBusiness.setChecked((Boolean) dataSnapshot.child("preferredCategories").child("business").getValue());
+                switchTech.setChecked((Boolean) dataSnapshot.child("preferredCategories").child("technology").getValue());
+                switchWorld.setChecked((Boolean) dataSnapshot.child("preferredCategories").child("world").getValue());
             }
 
             @Override
