@@ -1,0 +1,4 @@
+Implemented firebase real-time database to the application 
+Started testing the database within the application 
+Removed Azure from the application completely 
+Fixed Firebase and got it to work
