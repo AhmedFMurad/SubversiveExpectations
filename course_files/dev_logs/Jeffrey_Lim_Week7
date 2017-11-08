@@ -1,0 +1,7 @@
+Continue working on the XML parsing function, it is not fully functional just yet
+Fixed other UI elements that make the app a bit more streamline in use
+Started some work on the prize class
+Added some to the logging in and out sequences
+Prepared for the prototype presentation, figuring out what to present
+Tried to load XML data into the app but no success
+Instead created example articles that are to be shown in the presentation
