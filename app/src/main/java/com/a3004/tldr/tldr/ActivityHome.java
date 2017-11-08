@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.prof.rssparser.Article;
+import com.prof.rssparser.Parser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +31,7 @@ public class ActivityHome extends AppCompatActivity {
     private DatabaseReference mDatabaseReference;
     private CardViewActivity cardAdapter;
     private ListView listview;
-    private ArrayList<Article> articles;
+    //private ArrayList<Article> articles;
     private final String url = "http://rss.nytimes.com/services/xml/rss/nyt/Education.xml";
 
 
@@ -78,6 +79,8 @@ public class ActivityHome extends AppCompatActivity {
 
         cardAdapter = new CardViewActivity(ActivityHome.this, articles);
         listview.setAdapter(cardAdapter);*/
+
+        loadFeed(url);
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         Menu menu = bottomNavigationView.getMenu();
@@ -104,6 +107,23 @@ public class ActivityHome extends AppCompatActivity {
                         break;
                 }
                 return true;
+            }
+        });
+    }
+
+    public void loadFeed(String url){
+        Parser parser = new Parser();
+        parser.execute(url);
+        parser.onFinish(new Parser.OnTaskCompleted(){
+            @Override
+            public void onTaskCompleted(ArrayList<Article> list) {
+                cardAdapter = new CardViewActivity(ActivityHome.this, list);
+                listview.setAdapter(cardAdapter);
+            }
+
+            @Override
+            public void onError() {
+
             }
         });
     }
