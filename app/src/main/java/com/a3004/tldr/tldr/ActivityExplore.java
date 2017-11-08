@@ -94,9 +94,9 @@ public class ActivityExplore extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    mDatabaseReference.child("preferedCategories").child("world").setValue(true);
+                    mDatabaseReference.child("preferredCategories").child("world").setValue(true);
                 } else {
-                    mDatabaseReference.child("preferedCategories").child("world").setValue(false);
+                    mDatabaseReference.child("preferredCategories").child("world").setValue(false);
                 }
             }
         });
@@ -105,9 +105,9 @@ public class ActivityExplore extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    mDatabaseReference.child("preferedCategories").child("technology").setValue(true);
+                    mDatabaseReference.child("preferredCategories").child("technology").setValue(true);
                 } else {
-                    mDatabaseReference.child("preferedCategories").child("technology").setValue(false);
+                    mDatabaseReference.child("preferredCategories").child("technology").setValue(false);
                 }
             }
         });
@@ -116,9 +116,9 @@ public class ActivityExplore extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    mDatabaseReference.child("preferedCategories").child("business").setValue(true);
+                    mDatabaseReference.child("preferredCategories").child("business").setValue(true);
                 } else {
-                    mDatabaseReference.child("preferedCategories").child("business").setValue(false);
+                    mDatabaseReference.child("preferredCategories").child("business").setValue(false);
                 }
             }
         });
