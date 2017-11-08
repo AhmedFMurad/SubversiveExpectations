@@ -1,6 +1,8 @@
 package com.a3004.tldr.tldr;
 
 
+import com.prof.rssparser.Article;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -30,9 +32,9 @@ public class Category {
 
 
 
-    public void parseXML(String site){
+    /*public void parseXML(String site){
         try{
-            /* Make connection with the url*/
+
             URL url = new URL(site);
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -68,5 +70,5 @@ public class Category {
             e.printStackTrace();
         }
 
-    }
+    }*/
 }

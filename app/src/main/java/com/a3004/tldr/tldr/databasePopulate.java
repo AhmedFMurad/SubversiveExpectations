@@ -6,6 +6,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.prof.rssparser.Article;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,12 +26,12 @@ public class databasePopulate {
         populate.cat = new Category();
         //populate.initFirebase();
         // this works, but can't add it to the database.
-        populate.cat.parseXML("http://rss.nytimes.com/services/xml/rss/nyt/World.xml");
+        //populate.cat.parseXML("http://rss.nytimes.com/services/xml/rss/nyt/World.xml");
         ArrayList<Article> articles;
         articles = populate.cat.getArticles();
-        System.out.println(articles.size());
-        System.out.println(articles.get(10).getArticleDescription());
-        System.out.println(articles.get(10).getArticleURL());
+        //System.out.println(articles.size());
+        //System.out.println(articles.get(10).getArticleDescription());
+        //System.out.println(articles.get(10).getArticleURL());
        // populate.mDatabaseReference.child("articles").setValue(populate.cat.getArticles().size());
     }
 

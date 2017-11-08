@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.prof.rssparser.Article;
+
 import java.util.ArrayList;
 
 public class CardViewActivity extends BaseAdapter {
@@ -46,7 +48,7 @@ public class CardViewActivity extends BaseAdapter {
         TextView content = (TextView) convertView.findViewById(R.id.content);
         ImageView image = (ImageView) convertView.findViewById(R.id.image_view);
 
-        if(position == 0) {
+        /*if(position == 0) {
             image.setImageResource(R.drawable.obama);
         } else if(position == 1) {
             image.setImageResource(R.drawable.trump);
@@ -56,11 +58,12 @@ public class CardViewActivity extends BaseAdapter {
             image.setImageResource(R.drawable.pepe1);
         } else if(position == 2) {
             image.setImageResource(R.drawable.pepe2);
-        }
+        }*/
+
         Article article = articles.get(position);
 
-        title.setText(article.getArticleTitle());
-        content.setText(article.getArticleDescription());
+        title.setText(article.getTitle());
+        content.setText(article.getContent());
 
 
         return convertView;

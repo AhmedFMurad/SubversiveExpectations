@@ -3,7 +3,7 @@ package com.a3004.tldr.tldr;
 
 import java.util.ArrayList;
 
-public class Article {
+public class ArticleDifferent {
     private String articleText;
     private String articleImage;
     private String articleURL;
@@ -13,10 +13,10 @@ public class Article {
     private String articleDescription;
     private ArrayList<Summary> summaries;
 
-    public Article() {
+    public ArticleDifferent() {
 
     }
-    public Article(String articleTitle, String articleText, String articleImage, String articleURL,
+    public ArticleDifferent(String articleTitle, String articleText, String articleImage, String articleURL,
                    String articleCategory) {
         this.articleTitle = articleTitle;
         this.articleText = articleText;
@@ -27,13 +27,13 @@ public class Article {
         //
     }
 
-    public Article(String articleCategory, String articleText) {
+    public ArticleDifferent(String articleCategory, String articleText) {
         this.articleCategory = articleCategory;
         this.articleText = articleText;
         //this.articleID = articleID;
     }
 
-    public Article(String articleURL, String articleTitle, String articleDescription){
+    public ArticleDifferent(String articleURL, String articleTitle, String articleDescription){
         this.articleDescription = articleDescription;
         this.articleURL = articleURL;
         this.articleTitle = articleTitle;

@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.prof.rssparser.Article;
+
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<mViewHolder> {
@@ -38,7 +40,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<mViewHolder> {
     }
 
     public void onBindViewHolder(final mViewHolder holder, final int position) {
-        holder.tv.setText(articles.get(position).getArticleText());
+        holder.tv.setText(articles.get(position).getContent());
         holder.iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
