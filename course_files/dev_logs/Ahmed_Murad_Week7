@@ -1,0 +1,9 @@
+Firebase Email/Password auth added
+Firebase Anonymous auth added
+Added the ability to view the app with an anonymous account, then sign up to the same UID using email/password 
+Added list view to ActivityHome
+Got the card view to work with the list view on Home activity
+Added some UI improvements for buttons and coloring 
+Connected multiple UIs to the database to keep track of user activity and prefrences 
+Edited some classes to work with the changes above correctly 
+Improved card view and decreased padding 
