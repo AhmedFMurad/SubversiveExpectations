@@ -34,7 +34,7 @@ public class ActivityHome extends AppCompatActivity {
     private ArticleAdapter articleAdapter;
     private ListView listview;
     private ArrayList<ArticleDifferent> articlesDifferent;
-    private final String url = "http://rss.nytimes.com/services/xml/rss/nyt/World.xml";
+    private final String url1 = "http://rss.nytimes.com/services/xml/rss/nyt/World.xml";
 
 
     public void initFirebase(){
@@ -88,7 +88,7 @@ public class ActivityHome extends AppCompatActivity {
 
         /*loadfeed loads the feed*/
 
-        loadFeed(url);
+        loadFeed(url1);
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         Menu menu = bottomNavigationView.getMenu();
