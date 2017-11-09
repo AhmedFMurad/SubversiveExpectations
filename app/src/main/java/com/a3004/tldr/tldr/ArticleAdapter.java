@@ -55,8 +55,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         }
 
         viewHolder.title.setText(currArticle.getTitle());
-
-
+        viewHolder.content.setText(currArticle.getContent());
 
         return convertView;
     }
