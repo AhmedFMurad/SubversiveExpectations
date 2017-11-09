@@ -7,16 +7,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.prof.rssparser.Article;
 
 import java.util.ArrayList;
 
 public class CardViewActivity extends BaseAdapter {
 
     private Context context;
-    private ArrayList<Article> articles;
+    private ArrayList<ArticleDifferent> articles;
 
-    public CardViewActivity(Context context, ArrayList<Article> articles) {
+    public CardViewActivity(Context context, ArrayList<ArticleDifferent> articles) {
         this.context = context;
         this.articles = articles;
     }
@@ -48,7 +47,7 @@ public class CardViewActivity extends BaseAdapter {
         TextView content = (TextView) convertView.findViewById(R.id.content);
         ImageView image = (ImageView) convertView.findViewById(R.id.image_view);
 
-        /*if(position == 0) {
+        if(position == 0) {
             image.setImageResource(R.drawable.obama);
         } else if(position == 1) {
             image.setImageResource(R.drawable.trump);
@@ -58,12 +57,14 @@ public class CardViewActivity extends BaseAdapter {
             image.setImageResource(R.drawable.pepe1);
         } else if(position == 2) {
             image.setImageResource(R.drawable.pepe2);
-        }*/
+        }
 
-        Article article = articles.get(position);
 
-        title.setText(article.getTitle());
-        content.setText(article.getContent());
+        ArticleDifferent article = articles.get(position);
+
+        title.setText(article.getArticleTitle());
+        content.setText(article.getArticleDescription());
+        //this works, just got to figure out how to work it article.getImage();
 
 
         return convertView;

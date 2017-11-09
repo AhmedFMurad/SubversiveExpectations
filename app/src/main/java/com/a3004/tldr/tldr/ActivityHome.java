@@ -30,8 +30,9 @@ public class ActivityHome extends AppCompatActivity {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private CardViewActivity cardAdapter;
+    private ArticleAdapter articleAdapter;
     private ListView listview;
-    //private ArrayList<Article> articles;
+    private ArrayList<ArticleDifferent> articlesDifferent;
     private final String url = "http://rss.nytimes.com/services/xml/rss/nyt/Education.xml";
 
 
@@ -62,22 +63,22 @@ public class ActivityHome extends AppCompatActivity {
             });
         }
 
-        /*articles = new ArrayList<>();
-        Article article1 = new Article("google.com", "Carleton and OttawaU are merging", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat justo eget ligula suscipit dapibus. Duis mollis pulvinar finibus. Mauris feugiat semper porttitor. Cras convallis, diam a maximus convallis, nibh enim tincidunt libero, eu congue est odio id nulla. Nunc sagittis quam et vestibulum efficitur. Suspendisse commodo, lacus at fringilla consectetur, dolor risus laoreet orci, at fermentum sapien tellus et ligula.");
-        Article article2 = new Article("carleton.ca", "All students get A+", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat justo eget ligula suscipit dapibus. Duis mollis pulvinar finibus. Mauris feugiat semper porttitor. Cras convallis, diam a maximus convallis, nibh enim tincidunt libero, eu congue est odio id nulla. Nunc sagittis quam et vestibulum efficitur. Suspendisse commodo, lacus at fringilla consectetur, dolor risus laoreet orci, at fermentum sapien tellus et ligula.");
-        Article article3 = new Article("carleton.ca", "Subversive Expectations is the best", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat justo eget ligula suscipit dapibus. Duis mollis pulvinar finibus. Mauris feugiat semper porttitor. Cras convallis, diam a maximus convallis, nibh enim tincidunt libero, eu congue est odio id nulla. Nunc sagittis quam et vestibulum efficitur. Suspendisse commodo, lacus at fringilla consectetur, dolor risus laoreet orci, at fermentum sapien tellus et ligula.");
-        Article article4 = new Article("test.lol", "Random news about Tesla failing", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat justo eget ligula suscipit dapibus. Duis mollis pulvinar finibus. Mauris feugiat semper porttitor. Cras convallis, diam a maximus convallis, nibh enim tincidunt libero, eu congue est odio id nulla. Nunc sagittis quam et vestibulum efficitur. Suspendisse commodo, lacus at fringilla consectetur, dolor risus laoreet orci, at fermentum sapien tellus et ligula.");
-        Article article5 = new Article("test.lol", "What did Trump say on Twitter today?", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat justo eget ligula suscipit dapibus. Duis mollis pulvinar finibus. Mauris feugiat semper porttitor. Cras convallis, diam a maximus convallis, nibh enim tincidunt libero, eu congue est odio id nulla. Nunc sagittis quam et vestibulum efficitur. Suspendisse commodo, lacus at fringilla consectetur, dolor risus laoreet orci, at fermentum sapien tellus et ligula.");
+        /*articlesDifferent = new ArrayList<>();
+        ArticleDifferent article1 = new ArticleDifferent("google.com", "Carleton and OttawaU are merging", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat justo eget ligula suscipit dapibus. Duis mollis pulvinar finibus. Mauris feugiat semper porttitor. Cras convallis, diam a maximus convallis, nibh enim tincidunt libero, eu congue est odio id nulla. Nunc sagittis quam et vestibulum efficitur. Suspendisse commodo, lacus at fringilla consectetur, dolor risus laoreet orci, at fermentum sapien tellus et ligula.");
+        ArticleDifferent article2 = new ArticleDifferent("carleton.ca", "All students get A+", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat justo eget ligula suscipit dapibus. Duis mollis pulvinar finibus. Mauris feugiat semper porttitor. Cras convallis, diam a maximus convallis, nibh enim tincidunt libero, eu congue est odio id nulla. Nunc sagittis quam et vestibulum efficitur. Suspendisse commodo, lacus at fringilla consectetur, dolor risus laoreet orci, at fermentum sapien tellus et ligula.");
+        ArticleDifferent article3 = new ArticleDifferent("carleton.ca", "Subversive Expectations is the best", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat justo eget ligula suscipit dapibus. Duis mollis pulvinar finibus. Mauris feugiat semper porttitor. Cras convallis, diam a maximus convallis, nibh enim tincidunt libero, eu congue est odio id nulla. Nunc sagittis quam et vestibulum efficitur. Suspendisse commodo, lacus at fringilla consectetur, dolor risus laoreet orci, at fermentum sapien tellus et ligula.");
+        ArticleDifferent article4 = new ArticleDifferent("test.lol", "Random news about Tesla failing", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat justo eget ligula suscipit dapibus. Duis mollis pulvinar finibus. Mauris feugiat semper porttitor. Cras convallis, diam a maximus convallis, nibh enim tincidunt libero, eu congue est odio id nulla. Nunc sagittis quam et vestibulum efficitur. Suspendisse commodo, lacus at fringilla consectetur, dolor risus laoreet orci, at fermentum sapien tellus et ligula.");
+        ArticleDifferent article5 = new ArticleDifferent("test.lol", "What did Trump say on Twitter today?", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat justo eget ligula suscipit dapibus. Duis mollis pulvinar finibus. Mauris feugiat semper porttitor. Cras convallis, diam a maximus convallis, nibh enim tincidunt libero, eu congue est odio id nulla. Nunc sagittis quam et vestibulum efficitur. Suspendisse commodo, lacus at fringilla consectetur, dolor risus laoreet orci, at fermentum sapien tellus et ligula.");
 
-        articles.add(article1);
-        articles.add(article2);
-        articles.add(article3);
-        articles.add(article4);
-        articles.add(article5);
+        articlesDifferent.add(article1);
+        articlesDifferent.add(article2);
+        articlesDifferent.add(article3);
+        articlesDifferent.add(article4);
+        articlesDifferent.add(article5);
 
         listview = (ListView) findViewById(R.id.cardList);
 
-        cardAdapter = new CardViewActivity(ActivityHome.this, articles);
+        cardAdapter = new CardViewActivity(ActivityHome.this, articlesDifferent);
         listview.setAdapter(cardAdapter);*/
 
         loadFeed(url);
@@ -117,8 +118,9 @@ public class ActivityHome extends AppCompatActivity {
         parser.onFinish(new Parser.OnTaskCompleted(){
             @Override
             public void onTaskCompleted(ArrayList<Article> list) {
-                cardAdapter = new CardViewActivity(ActivityHome.this, list);
-                listview.setAdapter(cardAdapter);
+                listview = (ListView) findViewById(R.id.cardList);
+                articleAdapter = new ArticleAdapter(list, ActivityHome.this);
+                listview.setAdapter(articleAdapter);
             }
 
             @Override
