@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -34,7 +33,7 @@ public class ActivityHome extends AppCompatActivity {
     private ArticleAdapter articleAdapter;
     private ListView listview;
     private ArrayList<ArticleDifferent> articlesDifferent;
-    private final String url = "http://rss.nytimes.com/services/xml/rss/nyt/Education.xml";
+    private final String url = "http://rss.nytimes.com/services/xml/rss/nyt/World.xml";
 
 
     public void initFirebase(){
@@ -81,6 +80,8 @@ public class ActivityHome extends AppCompatActivity {
 
         cardAdapter = new CardViewActivity(ActivityHome.this, articlesDifferent);
         listview.setAdapter(cardAdapter);*/
+
+        /*loadfeed loads the feed*/
 
         loadFeed(url);
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
