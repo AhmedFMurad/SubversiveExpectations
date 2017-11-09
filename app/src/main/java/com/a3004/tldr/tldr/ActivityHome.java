@@ -7,6 +7,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -62,6 +63,10 @@ public class ActivityHome extends AppCompatActivity {
                 }
             });
         }
+
+        ImageButton linkButton = (ImageButton) findViewById(R.id.link_button);
+        ImageButton likeButton = (ImageButton) findViewById(R.id.like_button);
+        ImageButton summariesButton = (ImageButton) findViewById(R.id.summary_button);
 
         /*articlesDifferent = new ArrayList<>();
         ArticleDifferent article1 = new ArticleDifferent("google.com", "Carleton and OttawaU are merging", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat justo eget ligula suscipit dapibus. Duis mollis pulvinar finibus. Mauris feugiat semper porttitor. Cras convallis, diam a maximus convallis, nibh enim tincidunt libero, eu congue est odio id nulla. Nunc sagittis quam et vestibulum efficitur. Suspendisse commodo, lacus at fringilla consectetur, dolor risus laoreet orci, at fermentum sapien tellus et ligula.");
