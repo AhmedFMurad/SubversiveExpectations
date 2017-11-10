@@ -1,15 +1,18 @@
 package com.a3004.tldr.tldr;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,6 +34,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         TextView title;
         TextView content;
         ImageView image;
+        ImageButton link;
     }
 
 
@@ -53,6 +57,8 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             viewHolder.title = convertView.findViewById(R.id.title);
             viewHolder.content = convertView.findViewById(R.id.content);
             viewHolder.image = convertView.findViewById(R.id.image_view);
+            viewHolder.link = convertView.findViewById(R.id.link_button);
+
 
             convertView.setTag(viewHolder);
         } else {
@@ -66,4 +72,6 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         return convertView;
     }
+
+
 }
