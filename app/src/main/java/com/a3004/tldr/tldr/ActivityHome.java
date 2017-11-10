@@ -34,7 +34,10 @@ public class ActivityHome extends AppCompatActivity {
     private ArticleAdapter articleAdapter;
     private ListView listview;
     private ArrayList<ArticleDifferent> articlesDifferent;
+    private ArrayList<Article> allArticles = new ArrayList<>();
     private final String url1 = "http://rss.nytimes.com/services/xml/rss/nyt/World.xml";
+    private final String url2 = "http://rss.cbc.ca/lineup/canada.xml";
+    private final String url3 = "https://www.androidauthority.com/feed/";
 
 
     public void initFirebase(){
@@ -87,8 +90,11 @@ public class ActivityHome extends AppCompatActivity {
         listview.setAdapter(cardAdapter);*/
 
         /*loadfeed loads the feed*/
+        /*can change it to show whenever the categories are selected to be true*/
+        //loadFeed(url1);
+        //loadFeed(url2);
+        loadFeed(url3);
 
-        loadFeed(url1);
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         Menu menu = bottomNavigationView.getMenu();
@@ -126,7 +132,10 @@ public class ActivityHome extends AppCompatActivity {
             @Override
             public void onTaskCompleted(ArrayList<Article> list) {
                 listview = (ListView) findViewById(R.id.cardList);
-                articleAdapter = new ArticleAdapter(list, ActivityHome.this);
+                for (int i = 0; i < list.size(); i++){
+                    allArticles.add(list.get(i));
+                }
+                articleAdapter = new ArticleAdapter(allArticles, ActivityHome.this);
                 listview.setAdapter(articleAdapter);
             }
 
