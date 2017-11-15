@@ -12,3 +12,5 @@ wk9   Nov 12 - Nov 18
 wk10  Nov 19 - Nov 25
 wk11  Nov 26 - Dec 2
 wk12  Dec 3  - Dec 9
+
+Each team member must have submitted at least 10 dev logs.
