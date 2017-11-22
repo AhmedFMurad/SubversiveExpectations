@@ -1,16 +1,7 @@
 package com.a3004.tldr.tldr;
-
-
 import com.prof.rssparser.Article;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-import java.net.URL;
 import java.util.ArrayList;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+
 
 public class Category {
     private String title;
@@ -19,6 +10,14 @@ public class Category {
     public ArrayList<Article> getArticles() { return this.articles; }
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setArticles(ArrayList<Article> articles) {
+        this.articles = articles;
     }
 
     public Category() {

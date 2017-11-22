@@ -25,6 +25,7 @@ public class Users {
         this.id = id;
         this.preferredCategories = preferedCategories;
     }
+    // comment
 
     public Users(String username, String id, Map<String,Boolean> preferedCategories, int amountOfCategories, int points, int amountOfPrizes) {
         this.username = username;

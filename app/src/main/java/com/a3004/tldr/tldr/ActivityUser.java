@@ -56,6 +56,7 @@ public class ActivityUser extends AppCompatActivity{
                     mDatabaseReference.child(user.getUid()).setValue(tldrUser);
                 }
             });
+            //comment
         } else if(mFirebaseAuth.getCurrentUser() != null) {
             for (UserInfo user : FirebaseAuth.getInstance().getCurrentUser().getProviderData()) {
                 if (user.getProviderId().equals("password")) {

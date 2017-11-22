@@ -65,6 +65,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
+        // comment
 
         viewHolder.title.setText(currArticle.getImage());
         viewHolder.content.setText(currArticle.getDescription());
