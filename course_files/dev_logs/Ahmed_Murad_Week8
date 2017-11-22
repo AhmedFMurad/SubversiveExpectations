@@ -1,0 +1,2 @@
+Helped fix an issue with articles that didn't have images
+Started storing articles on the database with unique child names to avoid duplicates 
