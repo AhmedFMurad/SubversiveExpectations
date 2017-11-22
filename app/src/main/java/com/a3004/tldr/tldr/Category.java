@@ -30,7 +30,13 @@ public class Category {
         this.articles = articles;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
+    public void setArticles(ArrayList<Article> articles) {
+        this.articles = articles;
+    }
 
     /*public void parseXML(String site){
         try{

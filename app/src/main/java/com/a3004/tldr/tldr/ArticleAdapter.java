@@ -67,9 +67,9 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         viewHolder.title.setText(currArticle.getTitle());
         viewHolder.content.setText(currArticle.getDescription());
-
-        Picasso.with(mContext).load(currArticle.getImage()).into(viewHolder.image);
-
+        if(currArticle.getImage() != ""){
+            Picasso.with(mContext).load(currArticle.getImage()).into(viewHolder.image);
+        }
         return convertView;
     }
 

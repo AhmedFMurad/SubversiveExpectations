@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -39,24 +40,29 @@ public class ActivityHome extends AppCompatActivity {
     private final String url1 = "http://rss.nytimes.com/services/xml/rss/nyt/World.xml";
     private final String url2 = "http://rss.cbc.ca/lineup/canada.xml";
     private final String url3 = "https://www.androidauthority.com/feed/";
+    private Category mCategory;
+
 
 
     public void initFirebase(){
         FirebaseApp.initializeApp(this);
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = mFirebaseDatabase.getReference("users");
+
     }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initFirebase();
+        mCategory = new Category();
+        mCategory.setTitle("technology");
         if(mFirebaseAuth.getCurrentUser() == null) {
             Task<AuthResult> task = mFirebaseAuth.signInAnonymously();
             task.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
+                    mDatabaseReference = mFirebaseDatabase.getReference("users");
                     FirebaseUser user = mFirebaseAuth.getCurrentUser();
                     Map<String,Boolean> cats = new HashMap<>();
                     cats.put("world", false);
@@ -129,13 +135,22 @@ public class ActivityHome extends AppCompatActivity {
             @Override
             public void onTaskCompleted(ArrayList<Article> list) {
                 listview = (ListView) findViewById(R.id.cardList);
+                mDatabaseReference = mFirebaseDatabase.getReference("categories");
+                mDatabaseReference.setValue(mCategory.getTitle());
 
                 for (int i = 0; i < list.size(); i++){
-                    allArticles.add(list.get(i));
-                }
+                    String url = list.get(i).getLink().replaceAll("\\.","");
+                    url = url.replaceAll("/","");
+                    Toast.makeText(getApplicationContext(), list.get(i).getLink(), Toast.LENGTH_SHORT).show();
+                    //allArticles.add(list.get(i));
+                    //Toast.makeText(getApplicationContext(), url, Toast.LENGTH_SHORT).show();
+                    mDatabaseReference.child(mCategory.getTitle()).child(url).setValue(list.get(i));
 
-                articleAdapter = new ArticleAdapter(allArticles, ActivityHome.this);
-                listview.setAdapter(articleAdapter);
+                }
+                Toast.makeText(getApplicationContext(), "THE LOOP ENDED", Toast.LENGTH_SHORT).show();
+                //articleAdapter = new ArticleAdapter(allArticles, ActivityHome.this);
+                //listview.setAdapter(articleAdapter);
+
             }
 
             @Override
