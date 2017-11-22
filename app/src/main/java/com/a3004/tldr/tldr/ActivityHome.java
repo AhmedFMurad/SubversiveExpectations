@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,14 +19,19 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.prof.rssparser.Article;
 import com.prof.rssparser.Parser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import static android.os.Build.VERSION_CODES.M;
 
 public class ActivityHome extends AppCompatActivity {
 
@@ -134,20 +140,19 @@ public class ActivityHome extends AppCompatActivity {
         parser.onFinish(new Parser.OnTaskCompleted(){
             @Override
             public void onTaskCompleted(ArrayList<Article> list) {
-                listview = (ListView) findViewById(R.id.cardList);
+
                 mDatabaseReference = mFirebaseDatabase.getReference("categories");
-                mDatabaseReference.setValue(mCategory.getTitle());
 
                 for (int i = 0; i < list.size(); i++){
                     String url = list.get(i).getLink().replaceAll("\\.","");
                     url = url.replaceAll("/","");
-                    Toast.makeText(getApplicationContext(), list.get(i).getLink(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), list.get(i).getLink(), Toast.LENGTH_SHORT).show();
                     //allArticles.add(list.get(i));
                     //Toast.makeText(getApplicationContext(), url, Toast.LENGTH_SHORT).show();
                     mDatabaseReference.child(mCategory.getTitle()).child(url).setValue(list.get(i));
 
                 }
-                Toast.makeText(getApplicationContext(), "THE LOOP ENDED", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "THE LOOP ENDED", Toast.LENGTH_SHORT).show();
                 //articleAdapter = new ArticleAdapter(allArticles, ActivityHome.this);
                 //listview.setAdapter(articleAdapter);
 
@@ -159,4 +164,38 @@ public class ActivityHome extends AppCompatActivity {
             }
         });
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        listview = (ListView) findViewById(R.id.cardList);
+        mDatabaseReference = mFirebaseDatabase.getReference();
+        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+               //
+
+                for (DataSnapshot postSnapshot: dataSnapshot.child("categories").child("technology").getChildren()) {
+                   // Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_SHORT).show();
+                    Article article = new Article();
+                   // Toast.makeText(getApplicationContext(), postSnapshot.child("author").getValue().toString(), Toast.LENGTH_SHORT).show();
+                    article.setAuthor((String) postSnapshot.child("author").getValue());
+                    article.setContent((String) postSnapshot.child("content").getValue());
+                    article.setDescription((String) postSnapshot.child("description").getValue());
+                    article.setImage((String) postSnapshot.child("image").getValue());
+                    //article.setPubDate((Date) postSnapshot.child("author").getValue());
+                    article.setTitle((String) postSnapshot.child("title").getValue());
+                    allArticles.add(article);
+                }
+                articleAdapter = new ArticleAdapter(allArticles, ActivityHome.this);
+
+                listview.setAdapter(articleAdapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("test" , "test 2");
+            }
+        });
+    }
+
 }
