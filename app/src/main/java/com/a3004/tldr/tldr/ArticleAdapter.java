@@ -8,6 +8,7 @@ import android.media.Image;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,11 +66,13 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.title.setText(currArticle.getTitle());
+        viewHolder.title.setText(currArticle.getImage());
         viewHolder.content.setText(currArticle.getDescription());
-        if(currArticle.getImage() != ""){
-            Picasso.with(mContext).load(currArticle.getImage()).into(viewHolder.image);
-        }
+
+
+
+        //Picasso.with(mContext).load(currArticle.getImage()).into(viewHolder.image);
+
         return convertView;
     }
 
