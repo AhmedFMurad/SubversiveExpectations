@@ -5,7 +5,7 @@ import java.util.Map;
 public class Users {
     protected String username;
     protected String id;
-    protected Map<String,Boolean> preferedCategories;
+    protected Map<String,Boolean> preferredCategories;
     protected int points;
     protected int amountOfPrizes;
 
@@ -23,13 +23,13 @@ public class Users {
     public Users(String username, String id, Map<String,Boolean> preferedCategories) {
         this.username = username;
         this.id = id;
-        this.preferedCategories = preferedCategories;
+        this.preferredCategories = preferedCategories;
     }
 
     public Users(String username, String id, Map<String,Boolean> preferedCategories, int amountOfCategories, int points, int amountOfPrizes) {
         this.username = username;
         this.id = id;
-        this.preferedCategories = preferedCategories;
+        this.preferredCategories = preferedCategories;
         this.points = points;
         this.amountOfPrizes = amountOfPrizes;
     }
