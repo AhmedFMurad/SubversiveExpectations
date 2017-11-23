@@ -65,17 +65,13 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        // comment
-
-        viewHolder.title.setText(currArticle.getTitle());
-        viewHolder.content.setText(currArticle.getDescription());
-
-
-        if(currArticle.getImage() != "") {
-            Picasso.with(mContext).load(currArticle.getImage()).into(viewHolder.image);
-        }
-        //
-
+            viewHolder.title.setText(currArticle.getTitle());
+            viewHolder.content.setText(currArticle.getDescription());
+            if (currArticle.getImage() != null) {
+                Picasso.with(mContext).load(currArticle.getImage()).into(viewHolder.image);
+            } else {
+                Picasso.with(mContext).load(R.drawable.pepe1).into(viewHolder.image);
+            }
         return convertView;
     }
 
