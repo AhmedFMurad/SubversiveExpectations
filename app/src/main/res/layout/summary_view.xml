@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
@@ -60,8 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/title"
-                    android:text="artical content \n blablabla blabla blablabla
-                blablabla blablabla blablabla"
+                    android:text="artical content \n blablabla"
                     android:textAppearance="@style/TextAppearance.AppCompat"/>
 
                 <View
@@ -134,7 +134,7 @@
                     android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="-user name displaying here-"
+                    android:text="-user name-"
                     android:layout_marginTop="5dp"
                     android:textAppearance="@style/TextAppearance.AppCompat"
                     android:textSize="18sp"
