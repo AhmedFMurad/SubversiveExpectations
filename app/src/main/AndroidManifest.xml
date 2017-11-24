@@ -33,5 +33,8 @@
         <activity android:name=".User_AfterLogIn_Fragment">
             <action android:name="android.intent.action.MAIN"/>
         </activity>
+        <activity android:name=".SubmitSummary">
+            <action android:name="android.intent.action.MAIN"/>
+        </activity>
     </application>
 </manifest>

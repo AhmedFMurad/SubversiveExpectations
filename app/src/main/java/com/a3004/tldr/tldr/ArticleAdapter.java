@@ -23,6 +23,7 @@ import com.squareup.picasso.Picasso;
 import java.net.URL;
 import java.util.ArrayList;
 
+
 /**
  * Created by Jeffrey on 11-09-2017.
  */
@@ -30,12 +31,15 @@ import java.util.ArrayList;
 public class ArticleAdapter extends ArrayAdapter<Article> {
     Context mContext;
     private ArrayList<Article> articles;
+    private String url;
+    public static final String ARTICLE_URL = "url";
 
     private static class ViewHolder {
         TextView title;
         TextView content;
         ImageView image;
         ImageButton link;
+        ImageButton summary;
     }
 
 
@@ -46,7 +50,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(final int position, View convertView, ViewGroup parent){
         Article currArticle = articles.get(position);
         ViewHolder viewHolder;
 
@@ -59,6 +63,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             viewHolder.content = convertView.findViewById(R.id.content);
             viewHolder.image = convertView.findViewById(R.id.image_view);
             viewHolder.link = convertView.findViewById(R.id.link_button);
+            viewHolder.summary = convertView.findViewById(R.id.summary_button);
 
 
             convertView.setTag(viewHolder);
@@ -72,6 +77,16 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             } else {
                 Picasso.with(mContext).load(R.drawable.pepe1).into(viewHolder.image);
             }
+        //.replaceAll("\\.","").replaceAll("/","");
+        viewHolder.summary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, SubmitSummary.class);
+                url = articles.get(position).getLink();
+                intent.putExtra(ARTICLE_URL, "HELLO THERE");
+                mContext.startActivity(intent);
+            }
+        });
         return convertView;
     }
 
