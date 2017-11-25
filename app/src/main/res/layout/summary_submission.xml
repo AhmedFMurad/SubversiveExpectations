@@ -79,7 +79,6 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittext"
                 android:gravity="top|left"
-                android:hint="your summary here"
                 android:inputType="textMultiLine"
                 android:lines="6"
                 android:overScrollMode="always"
