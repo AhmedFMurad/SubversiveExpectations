@@ -42,7 +42,6 @@ public class ActivityUser extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_user_beforelogin);
         initFirebase();
-        mFirebaseAuth.signOut();
         if(mFirebaseAuth.getCurrentUser() == null) {
             Task<AuthResult> task = mFirebaseAuth.signInAnonymously();
             task.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
