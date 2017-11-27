@@ -19,6 +19,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.prof.rssparser.Article;
 import com.squareup.picasso.Picasso;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class ViewSummaries extends AppCompatActivity {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
@@ -28,12 +31,12 @@ public class ViewSummaries extends AppCompatActivity {
     ImageView image;
     TextView title;
     ImageView addSum;
-
+    ArrayList<Summary> mSummaries = new ArrayList<>();
 
     public void initFirebase(){
         FirebaseApp.initializeApp(this);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = mFirebaseDatabase.getReference().child("categories").child("technology");
+        mDatabaseReference = mFirebaseDatabase.getReference();
 
     }
 
@@ -62,7 +65,7 @@ public class ViewSummaries extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        mDatabaseReference = mDatabaseReference.child(url);
+        mDatabaseReference = mDatabaseReference.child("categories").child("technology").child(url);
         mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -76,6 +79,28 @@ public class ViewSummaries extends AppCompatActivity {
                 Picasso.with(context).load(article.getImage()).into(image);
                 title.setText(article.getTitle());
                 content.setText(article.getDescription());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        mDatabaseReference = mFirebaseDatabase.getReference();
+        mDatabaseReference = mDatabaseReference.child("summaries").child(url);
+        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Summary summary = new Summary();
+                    //summary.setUpvotes((ArrayList<String>) postSnapshot.child("summary").child("upvotes").getValue());
+                    summary.setContent((String) postSnapshot.child("summary").child("content").getValue());
+                    //summary.setDownvotes((ArrayList<String>) postSnapshot.child("summary").child("upvotes").getValue());
+                    summary.setUID((String) postSnapshot.child("summary").child("uid").getValue());
+                    mSummaries.add(summary);
+                }
+
             }
 
             @Override
