@@ -36,5 +36,8 @@
         <activity android:name=".SubmitSummary">
             <action android:name="android.intent.action.MAIN"/>
         </activity>
+        <activity android:name=".ViewSummaries">
+            <action android:name="android.intent.action.MAIN"/>
+        </activity>
     </application>
 </manifest>

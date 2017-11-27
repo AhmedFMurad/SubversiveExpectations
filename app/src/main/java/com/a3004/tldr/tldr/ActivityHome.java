@@ -6,10 +6,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -113,10 +110,6 @@ public class ActivityHome extends AppCompatActivity {
                 return true;
             }
         });
-
-        /**/
-
-        Toast.makeText(this, ""+allArticles.size(), Toast.LENGTH_SHORT).show();
     }
 
     public void loadFeed(String url){
@@ -163,6 +156,7 @@ public class ActivityHome extends AppCompatActivity {
                     article.setDescription((String) postSnapshot.child("description").getValue());
                     article.setImage((String) postSnapshot.child("image").getValue());
                     article.setTitle((String) postSnapshot.child("title").getValue());
+                    article.setLink((String) postSnapshot.child("link").getValue());
                     allArticles.add(article);
                 }
                 articleAdapter = new ArticleAdapter(allArticles, ActivityHome.this);

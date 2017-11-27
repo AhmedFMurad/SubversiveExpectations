@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.prof.rssparser.Article;
 import com.squareup.picasso.Picasso;
@@ -31,7 +32,7 @@ import java.util.ArrayList;
 public class ArticleAdapter extends ArrayAdapter<Article> {
     Context mContext;
     private ArrayList<Article> articles;
-    private String url;
+    public String url;
     public static final String ARTICLE_URL = "url";
 
     private static class ViewHolder {
@@ -77,13 +78,12 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             } else {
                 Picasso.with(mContext).load(R.drawable.pepe1).into(viewHolder.image);
             }
-        //.replaceAll("\\.","").replaceAll("/","");
+        url = currArticle.getLink();
         viewHolder.summary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, SubmitSummary.class);
-                url = articles.get(position).getLink();
-                intent.putExtra(ARTICLE_URL, "HELLO THERE");
+                Intent intent = new Intent(mContext, ViewSummaries.class);
+                intent.putExtra("newUrl", url);
                 mContext.startActivity(intent);
             }
         });
