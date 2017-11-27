@@ -50,6 +50,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/image_view"
                     android:text="TITLE"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat"
                     android:textSize="18sp"
@@ -59,6 +61,7 @@
                     android:id="@+id/content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/title"
                     android:text="artical content \n blablabla"
@@ -103,7 +106,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"
                     android:background="@color/white"
-                    android:src="@drawable/ic_comment_black_24dp"/>
+                    android:src="@drawable/ic_add_circle_outline_black_24dp"/>
 
             </RelativeLayout>
 
