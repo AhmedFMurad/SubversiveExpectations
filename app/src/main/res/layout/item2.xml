@@ -44,7 +44,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/image_view"
+                android:layout_marginTop="10dp"
                 android:text="TITLE"
+                android:textStyle="bold"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="18sp"
@@ -56,6 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/title"
+                android:layout_marginTop="10dp"
                 android:text="artical content \n blablabla blabla blablabla
                 blablabla blablabla blablabla"
                 android:textAppearance="@style/TextAppearance.AppCompat"/>

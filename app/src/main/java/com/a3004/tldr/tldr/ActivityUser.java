@@ -20,9 +20,7 @@ import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -42,6 +40,7 @@ public class ActivityUser extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_user_beforelogin);
         initFirebase();
+        mFirebaseAuth.signOut();
         if(mFirebaseAuth.getCurrentUser() == null) {
             Task<AuthResult> task = mFirebaseAuth.signInAnonymously();
             task.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
