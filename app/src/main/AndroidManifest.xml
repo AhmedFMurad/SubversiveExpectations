@@ -5,9 +5,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/pepe1"
+        android:icon="@drawable/tldr2"
+        android:roundIcon="@drawable/tldr2"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/pepe2"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ActivityHome">
