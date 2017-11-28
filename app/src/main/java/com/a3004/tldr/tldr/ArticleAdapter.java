@@ -2,13 +2,6 @@ package com.a3004.tldr.tldr;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
-import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,20 +13,12 @@ import android.widget.Toast;
 
 import com.prof.rssparser.Article;
 import com.squareup.picasso.Picasso;
-
-import java.net.URL;
 import java.util.ArrayList;
-
-
-/**
- * Created by Jeffrey on 11-09-2017.
- */
 
 public class ArticleAdapter extends ArrayAdapter<Article> {
     Context mContext;
     private ArrayList<Article> articles;
     public String url;
-    public static final String ARTICLE_URL = "url";
 
     private static class ViewHolder {
         TextView title;
@@ -52,7 +37,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent){
-        Article currArticle = articles.get(position);
+        final Article currArticle = articles.get(position);
         ViewHolder viewHolder;
 
 
@@ -79,13 +64,11 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         } else {
             Picasso.with(mContext).load(R.drawable.pepe1).into(viewHolder.image);
         }
-
-        url = currArticle.getLink();
         viewHolder.summary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, ViewSummaries.class);
-                intent.putExtra("newUrl", url);
+                intent.putExtra("newUrl", currArticle.getLink());
                 mContext.startActivity(intent);
             }
         });

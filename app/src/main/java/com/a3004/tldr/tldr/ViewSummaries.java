@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -93,6 +94,7 @@ public class ViewSummaries extends AppCompatActivity {
 
         mDatabaseReference = mFirebaseDatabase.getReference();
         mDatabaseReference = mDatabaseReference.child("summaries").child(url);
+        Toast.makeText(this, url, Toast.LENGTH_SHORT).show();
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

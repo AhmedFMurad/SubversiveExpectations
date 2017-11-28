@@ -75,12 +75,6 @@ public class ActivityHome extends AppCompatActivity {
                 }
             });
         }
-
-
-        /*loadfeed loads the feed*/
-        /*can change it to show whenever the categories are selected to be true*/
-        //loadFeed(url1);
-        //loadFeed(url2);
         loadFeed(url3);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
