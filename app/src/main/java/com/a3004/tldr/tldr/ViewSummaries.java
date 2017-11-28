@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.FirebaseApp;
@@ -32,6 +33,8 @@ public class ViewSummaries extends AppCompatActivity {
     TextView title;
     ImageView addSum;
     ArrayList<Summary> mSummaries = new ArrayList<>();
+    private ViewSummaryAdapter summaryAdapter;
+    private ListView listview;
 
     public void initFirebase(){
         FirebaseApp.initializeApp(this);
@@ -65,6 +68,7 @@ public class ViewSummaries extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        listview = (ListView) findViewById(R.id.summaryList);
         mDatabaseReference = mDatabaseReference.child("categories").child("technology").child(url);
         mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -100,7 +104,8 @@ public class ViewSummaries extends AppCompatActivity {
                     summary.setUID((String) postSnapshot.child("summary").child("uid").getValue());
                     mSummaries.add(summary);
                 }
-
+                summaryAdapter = new ViewSummaryAdapter(mSummaries, ViewSummaries.this);
+                listview.setAdapter(summaryAdapter);
             }
 
             @Override
