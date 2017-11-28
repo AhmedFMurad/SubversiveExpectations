@@ -22,9 +22,6 @@ import java.util.ArrayList;
 public class ArticleAdapter extends ArrayAdapter<Article> {
     Context mContext;
     private ArrayList<Article> articles;
-    public String url;
-    Firebase mFirebase = new Firebase(mContext);
-    private Article currArticle;
     ViewHolder viewHolder;
     private static class ViewHolder {
         TextView title;
@@ -44,8 +41,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent){
-        currArticle = articles.get(position);
-
+        final Article currArticle  = articles.get(position);
 
         if (convertView == null){
             viewHolder = new ViewHolder();
@@ -74,46 +70,6 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             }
         });
 
-        viewHolder.like.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mFirebase.getDatabaseReference().addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if(!dataSnapshot
-                                .child("categories")
-                                .child("technology")
-                                .child(currArticle.getLink().replaceAll("\\.","").replaceAll("/",""))
-                                .child("likes")
-                                .hasChild(mFirebase.getFirebaseAuth().getCurrentUser().getUid())){
-
-                            mFirebase.getDatabaseReference()
-                                    .child("categories")
-                                    .child("technology")
-                                    .child(currArticle.getLink().replaceAll("\\.","").replaceAll("/",""))
-                                    .child("likes")
-                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
-                                    .setValue(1);
-                            viewHolder.like.setImageResource(R.drawable.ic_thumb_up_green_24dp);
-                        } else {
-                            mFirebase.getDatabaseReference()
-                                    .child("categories").
-                                    child("technology")
-                                    .child(currArticle.getLink().replaceAll("\\.","").replaceAll("/",""))
-                                    .child("likes")
-                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
-                                    .removeValue();
-                            viewHolder.like.setImageResource(R.drawable.ic_thumb_up_black_24dp);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-            }
-        });
         if (currArticle.getImage() != null) {
             Picasso.with(mContext).load(currArticle.getImage()).into(viewHolder.image);
         } else {
