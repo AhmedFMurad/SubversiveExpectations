@@ -10,7 +10,7 @@ public class Summary {
     private ArrayList<String> downvotes;
     private String UID;
     private String content;
-
+    private String url;
     public Summary() {
 
     }
@@ -45,5 +45,13 @@ public class Summary {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

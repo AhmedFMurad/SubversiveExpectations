@@ -61,13 +61,17 @@ public class SubmitSummary extends AppCompatActivity {
             public void onClick(View v) {
                 Summary summary = new Summary();
                 ArrayList<String> empty = new ArrayList<String>();
+                empty.add(null);
                 summary.setDownvotes(empty);
                 summary.setUpvotes(empty);
                 summary.setUID(mFirebaseAuth.getCurrentUser().getUid());
                 summary.setContent(submission.getText().toString().trim());
+                summary.setUrl(url);
                 mDatabaseReference = mFirebaseDatabase.getReference();
-                mDatabaseReference.child("summaries").child(url)
-                        .child(mFirebaseAuth.getCurrentUser().getUid()).child("summary")
+                mDatabaseReference.child("summaries")
+                        .child(url)
+                        .child(mFirebaseAuth.getCurrentUser().getUid())
+                        .child("summary")
                         .setValue(summary);
                 Intent intent = new Intent(context, ViewSummaries.class);
                 intent.putExtra("newUrl", url);
@@ -101,5 +105,11 @@ public class SubmitSummary extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(context, ViewSummaries.class);
+        intent.putExtra("newUrl", url);
+        context.startActivity(intent);
     }
 }

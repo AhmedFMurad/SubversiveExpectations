@@ -94,16 +94,14 @@ public class ViewSummaries extends AppCompatActivity {
 
         mDatabaseReference = mFirebaseDatabase.getReference();
         mDatabaseReference = mDatabaseReference.child("summaries").child(url);
-        Toast.makeText(this, url, Toast.LENGTH_SHORT).show();
-        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+        mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     Summary summary = new Summary();
-                    //summary.setUpvotes((ArrayList<String>) postSnapshot.child("summary").child("upvotes").getValue());
                     summary.setContent((String) postSnapshot.child("summary").child("content").getValue());
-                    //summary.setDownvotes((ArrayList<String>) postSnapshot.child("summary").child("upvotes").getValue());
                     summary.setUID((String) postSnapshot.child("summary").child("uid").getValue());
+                    summary.setUrl(url);
                     mSummaries.add(summary);
                 }
                 summaryAdapter = new ViewSummaryAdapter(mSummaries, ViewSummaries.this);
@@ -115,5 +113,10 @@ public class ViewSummaries extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(context, ActivityHome.class);
+        context.startActivity(intent);
     }
 }

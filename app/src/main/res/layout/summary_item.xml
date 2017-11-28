@@ -76,7 +76,7 @@
                     android:layout_alignParentLeft="true"
                     android:background="@drawable/btn_shape"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_thumb_up_red_900_24dp"/>
+                    android:src="@drawable/ic_thumb_up_black_24dp"/>
 
                 <ImageButton
                     android:layout_width="0dp"
@@ -87,7 +87,7 @@
                     android:layout_alignParentLeft="true"
                     android:background="@drawable/btn_shape"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_thumb_down_red_900_24dp"/>
+                    android:src="@drawable/ic_thumb_down_black_24dp"/>
 
             </LinearLayout>
 

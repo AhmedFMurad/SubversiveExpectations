@@ -7,17 +7,21 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-/**
- * Created by Jeffrey on 11-27-2017.
- */
 
 public class ViewSummaryAdapter extends ArrayAdapter<Summary> {
     Context mContext;
     private ArrayList<Summary> summaries;
-
+    Firebase mFirebase = new Firebase(mContext);
+    private Summary currSummary;
+    ViewHolder viewHolder;
     private static class ViewHolder {
         ImageButton upvote;
         ImageButton downvote;
@@ -32,8 +36,7 @@ public class ViewSummaryAdapter extends ArrayAdapter<Summary> {
     }
 
     public View getView(final int position, View convertView, ViewGroup parent){
-        Summary currSummary = summaries.get(position);
-        ViewHolder viewHolder;
+        currSummary = summaries.get(position);
 
         if (convertView == null){
             viewHolder = new ViewHolder();
@@ -48,9 +51,170 @@ public class ViewSummaryAdapter extends ArrayAdapter<Summary> {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-
         viewHolder.summary.setText(currSummary.getContent());
+        viewHolder.upvote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFirebase.getDatabaseReference().addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if(!dataSnapshot.child("summaries").
+                                child(currSummary.getUrl())
+                                .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                .child("summary")
+                                .child("upvotes")
+                                .hasChild(mFirebase.getFirebaseAuth().getCurrentUser().getUid())){
 
+                            mFirebase.getDatabaseReference()
+                                    .child("summaries")
+                                    .child(currSummary.getUrl())
+                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                    .child("summary")
+                                    .child("upvotes")
+                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid()).
+                                    setValue(1);
+
+                            mFirebase.getDatabaseReference()
+                                    .child("summaries")
+                                    .child(currSummary.getUrl())
+                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                    .child("summary")
+                                    .child("downvotes")
+                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                    .removeValue();
+
+                            viewHolder.upvote.setImageResource(R.drawable.ic_thumb_up_green_24dp);
+                            viewHolder.downvote.setImageResource(R.drawable.ic_thumb_down_black_24dp);
+                        } else {
+                            mFirebase.getDatabaseReference()
+                                    .child("summaries")
+                                    .child(currSummary.getUrl())
+                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                    .child("summary")
+                                    .child("upvotes")
+                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                    .removeValue();
+                            viewHolder.upvote.setImageResource(R.drawable.ic_thumb_up_black_24dp);
+                        }
+
+                        if(!dataSnapshot.child("summaries").
+                                child(currSummary.getUrl())
+                                .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                .child("summary")
+                                .child("downvotes")
+                                .hasChild(mFirebase.getFirebaseAuth().getCurrentUser().getUid())) {
+
+                            mFirebase.getDatabaseReference()
+                                    .child("summaries")
+                                    .child(currSummary.getUrl())
+                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                    .child("summary")
+                                    .child("downvotes")
+                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                    .removeValue();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+
+        viewHolder.downvote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFirebase.getDatabaseReference().addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if(!dataSnapshot.child("summaries").
+                                child(currSummary.getUrl())
+                                .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                .child("summary")
+                                .child("downvotes")
+                                .hasChild(mFirebase.getFirebaseAuth().getCurrentUser().getUid())){
+
+                            mFirebase.getDatabaseReference()
+                                    .child("summaries")
+                                    .child(currSummary.getUrl())
+                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                    .child("summary")
+                                    .child("downvotes")
+                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid()).
+                                    setValue(1);
+
+                            mFirebase.getDatabaseReference()
+                                    .child("summaries")
+                                    .child(currSummary.getUrl())
+                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                    .child("summary")
+                                    .child("upvotes")
+                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                    .removeValue();
+
+                            viewHolder.downvote.setImageResource(R.drawable.ic_thumb_down_red_900_24dp);
+                            viewHolder.upvote.setImageResource(R.drawable.ic_thumb_up_black_24dp);
+                        } else {
+                            mFirebase.getDatabaseReference()
+                                    .child("summaries")
+                                    .child(currSummary.getUrl())
+                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                    .child("summary")
+                                    .child("downvotes")
+                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                    .removeValue();
+                            viewHolder.downvote.setImageResource(R.drawable.ic_thumb_down_black_24dp);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+        mFirebase.getDatabaseReference().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                viewHolder.username.setText((String) dataSnapshot.child("users").child(currSummary.getUID()).child("username").getValue());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        mFirebase.getDatabaseReference().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.child("summaries").
+                        child(currSummary.getUrl())
+                        .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                        .child("summary")
+                        .child("upvotes")
+                        .hasChild(mFirebase.getFirebaseAuth().getCurrentUser().getUid())){
+                    viewHolder.upvote.setImageResource(R.drawable.ic_thumb_up_green_24dp);
+                }
+                if(dataSnapshot.child("summaries").
+                        child(currSummary.getUrl())
+                        .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                        .child("summary")
+                        .child("downvotes")
+                        .hasChild(mFirebase.getFirebaseAuth().getCurrentUser().getUid())){
+                    viewHolder.downvote.setImageResource(R.drawable.ic_thumb_down_red_900_24dp);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         return convertView;
     }
 }
