@@ -60,7 +60,7 @@ public class ViewSummaryAdapter extends ArrayAdapter<Summary> {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if(!dataSnapshot.child("summaries").
                                 child(currSummary.getUrl())
-                                .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                .child(currSummary.getUID())
                                 .child("summary")
                                 .child("upvotes")
                                 .hasChild(mFirebase.getFirebaseAuth().getCurrentUser().getUid())){
@@ -68,7 +68,7 @@ public class ViewSummaryAdapter extends ArrayAdapter<Summary> {
                             mFirebase.getDatabaseReference()
                                     .child("summaries")
                                     .child(currSummary.getUrl())
-                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                    .child(currSummary.getUID())
                                     .child("summary")
                                     .child("upvotes")
                                     .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid()).
@@ -77,7 +77,7 @@ public class ViewSummaryAdapter extends ArrayAdapter<Summary> {
                             mFirebase.getDatabaseReference()
                                     .child("summaries")
                                     .child(currSummary.getUrl())
-                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                    .child(currSummary.getUID())
                                     .child("summary")
                                     .child("downvotes")
                                     .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
@@ -89,7 +89,7 @@ public class ViewSummaryAdapter extends ArrayAdapter<Summary> {
                             mFirebase.getDatabaseReference()
                                     .child("summaries")
                                     .child(currSummary.getUrl())
-                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                    .child(currSummary.getUID())
                                     .child("summary")
                                     .child("upvotes")
                                     .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
@@ -99,15 +99,15 @@ public class ViewSummaryAdapter extends ArrayAdapter<Summary> {
 
                         if(!dataSnapshot.child("summaries").
                                 child(currSummary.getUrl())
-                                .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                .child(currSummary.getUID())
                                 .child("summary")
                                 .child("downvotes")
-                                .hasChild(mFirebase.getFirebaseAuth().getCurrentUser().getUid())) {
+                                .hasChild(currSummary.getUID())) {
 
                             mFirebase.getDatabaseReference()
                                     .child("summaries")
                                     .child(currSummary.getUrl())
-                                    .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())
+                                    .child(currSummary.getUID())
                                     .child("summary")
                                     .child("downvotes")
                                     .child(mFirebase.getFirebaseAuth().getCurrentUser().getUid())

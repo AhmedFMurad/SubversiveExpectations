@@ -26,34 +26,36 @@ import java.util.Map;
 
 public class ActivityUser extends AppCompatActivity{
     private Button goLogin;
-    Firebase mFirebase = new Firebase(this);
-
-    /*public void initFirebase(){
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseReference;
+    public void initFirebase(){
         FirebaseApp.initializeApp(this);
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference("users");
-    }*/
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_user_beforelogin);
-        if(mFirebase.getFirebaseAuth().getCurrentUser() == null) {
-            Task<AuthResult> task = mFirebase.getFirebaseAuth().signInAnonymously();
+        initFirebase();
+        if(mFirebaseAuth.getCurrentUser() == null) {
+            Task<AuthResult> task = mFirebaseAuth.signInAnonymously();
             task.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    FirebaseUser user = mFirebase.getFirebaseAuth().getCurrentUser();
+                    FirebaseUser user = mFirebaseAuth.getCurrentUser();
                     Map<String,Boolean> cats = new HashMap<>();
                     cats.put("world", false);
                     cats.put("business", false);
                     cats.put("technology", false);
                     Users tldrUser = new Users("", user.getUid(),cats , 0, 10, 0);
-                    mFirebase.getDatabaseReference().child(user.getUid()).setValue(tldrUser);
+                    mDatabaseReference.child(user.getUid()).setValue(tldrUser);
                 }
             });
             //comment
-        } else if(mFirebase.getFirebaseAuth().getCurrentUser() != null) {
+        } else if(mFirebaseAuth.getCurrentUser() != null) {
             for (UserInfo user : FirebaseAuth.getInstance().getCurrentUser().getProviderData()) {
                 if (user.getProviderId().equals("password")) {
                     Intent intentIsLoggedIn = new Intent(ActivityUser.this, User_AfterLogIn_Fragment.class);
@@ -91,8 +93,8 @@ public class ActivityUser extends AppCompatActivity{
                         break;
 
                     case R.id.ic_user:
-                       // Intent intent2 = new Intent(ActivityUser.this, ActivityUser.class);
-                       // startActivity(intent2);
+                        // Intent intent2 = new Intent(ActivityUser.this, ActivityUser.class);
+                        // startActivity(intent2);
                         break;
                 }
                 return true;

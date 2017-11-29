@@ -1,4 +1,5 @@
 package com.a3004.tldr.tldr;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -42,7 +44,7 @@ public class ActivityHome extends AppCompatActivity {
     private final String url2 = "http://rss.cbc.ca/lineup/canada.xml";
     private final String url3 = "https://www.androidauthority.com/feed/";
     private Category mCategory;
-
+    Context context = this;
 
 
 
@@ -139,19 +141,54 @@ public class ActivityHome extends AppCompatActivity {
         super.onStart();
         listview = (ListView) findViewById(R.id.cardList);
         mDatabaseReference = mFirebaseDatabase.getReference();
-
         mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot: dataSnapshot.child("categories").child("technology").getChildren()) {
-                    Article article = new Article();
-                    article.setAuthor((String) postSnapshot.child("author").getValue());
-                    article.setContent((String) postSnapshot.child("content").getValue());
-                    article.setDescription((String) postSnapshot.child("description").getValue());
-                    article.setImage((String) postSnapshot.child("image").getValue());
-                    article.setTitle((String) postSnapshot.child("title").getValue());
-                    article.setLink((String) postSnapshot.child("link").getValue());
-                    allArticles.add(article);
+                if(dataSnapshot
+                        .child("users")
+                        .child(mFirebaseAuth.getCurrentUser().getUid())
+                        .child("preferredCategories")
+                        .child("technology").getValue().toString() == "true") {
+                    for (DataSnapshot postSnapshot : dataSnapshot.child("categories").child("technology").getChildren()) {
+                        Article article = new Article();
+                        article.setAuthor((String) postSnapshot.child("author").getValue());
+                        article.setContent((String) postSnapshot.child("content").getValue());
+                        article.setDescription((String) postSnapshot.child("description").getValue());
+                        article.setImage((String) postSnapshot.child("image").getValue());
+                        article.setTitle((String) postSnapshot.child("title").getValue());
+                        article.setLink((String) postSnapshot.child("link").getValue());
+                        allArticles.add(article);
+                    }
+                } else if(dataSnapshot.child("users")
+                        .child(mFirebaseAuth.getCurrentUser().getUid())
+                        .child("preferredCategories")
+                        .child("business").getValue().toString() == "true") {
+                    for (DataSnapshot postSnapshot : dataSnapshot.child("categories").child("business").getChildren()) {
+
+                        Article article = new Article();
+                        article.setAuthor((String) postSnapshot.child("author").getValue());
+                        article.setContent((String) postSnapshot.child("content").getValue());
+                        article.setDescription((String) postSnapshot.child("description").getValue());
+                        article.setImage((String) postSnapshot.child("image").getValue());
+                        article.setTitle((String) postSnapshot.child("title").getValue());
+                        article.setLink((String) postSnapshot.child("link").getValue());
+                        allArticles.add(article);
+                    }
+                } else if(dataSnapshot.child("users")
+                        .child(mFirebaseAuth.getCurrentUser().getUid())
+                        .child("preferredCategories")
+                        .child("world").getValue().toString() == "true") {
+
+                    for (DataSnapshot postSnapshot : dataSnapshot.child("categories").child("world").getChildren()) {
+                        Article article = new Article();
+                        article.setAuthor((String) postSnapshot.child("author").getValue());
+                        article.setContent((String) postSnapshot.child("content").getValue());
+                        article.setDescription((String) postSnapshot.child("description").getValue());
+                        article.setImage((String) postSnapshot.child("image").getValue());
+                        article.setTitle((String) postSnapshot.child("title").getValue());
+                        article.setLink((String) postSnapshot.child("link").getValue());
+                        allArticles.add(article);
+                    }
                 }
                 articleAdapter = new ArticleAdapter(allArticles, ActivityHome.this);
 
