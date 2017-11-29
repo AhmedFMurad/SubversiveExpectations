@@ -1,0 +1,6 @@
+Added summaries to the application
+Added the ability to like or dislike summaries
+Stored summaries on Firebase, and saved with the same unique key as articles to connect both objects easily 
+Added an override function to some activities to handle the back button on android 
+Connected the summaries activities and made them both functional and showing the right information/data
+Recorded the video for D4
