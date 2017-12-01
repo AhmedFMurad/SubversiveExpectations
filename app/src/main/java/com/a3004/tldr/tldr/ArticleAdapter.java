@@ -68,6 +68,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         }
         viewHolder.title.setText(currArticle.getTitle());
         viewHolder.content.setText(currArticle.getDescription());
+        //Toast.makeText(mContext, currArticle.getDescription(), Toast.LENGTH_LONG).show();
         viewHolder.link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,47 +118,10 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
                 });
             }
         });
-        do {
-            Toast.makeText(mContext, "yes", Toast.LENGTH_LONG).show();
-            mFirebase.getDatabaseReference().addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    for (DataSnapshot postSnapshot : dataSnapshot.child("categories").child("technology").getChildren()) {
-                        if (dataSnapshot.child("summaries")
-                                .child(postSnapshot.child("link")
-                                        .getValue().toString().replaceAll("\\.", "").replaceAll("/", ""))
-                                .exists()) {
 
-                            Query def = mFirebase.getDatabaseReference().child("summaries")
-                                    .child(postSnapshot.child("link")
-                                            .getValue().toString().replaceAll("\\.", "").replaceAll("/", "")).limitToFirst(1);
+            //Toast.makeText(mContext, "yes", Toast.LENGTH_LONG).show();
 
-                            def.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                                        viewHolder.content.setText(snap.child("summary").child("content").getValue().toString());
-                                        Toast.makeText(mContext, "ran", Toast.LENGTH_LONG).show();
-                                        yes = true;
-                                    }
-                                }
 
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-
-                                }
-                            });
-                            // Toast.makeText(context, yes, Toast.LENGTH_LONG).show();
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        } while (!yes);
         if (currArticle.getImage() != null) {
             Picasso.with(mContext).load(currArticle.getImage()).into(viewHolder.image);
         } else {
@@ -172,7 +136,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             }
         });
 
-
+        //android.os.SystemClock.sleep(1);
         return convertView;
     }
 

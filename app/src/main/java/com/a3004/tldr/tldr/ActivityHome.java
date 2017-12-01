@@ -1,5 +1,4 @@
 package com.a3004.tldr.tldr;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -56,7 +55,7 @@ public class ActivityHome extends AppCompatActivity {
     Article article;
     public boolean yes;
 
-    public void initFirebase() {
+    public void initFirebase(){
         FirebaseApp.initializeApp(this);
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
@@ -69,18 +68,18 @@ public class ActivityHome extends AppCompatActivity {
         initFirebase();
         mCategory = new Category();
         mCategory.setTitle("technology");
-        if (mFirebaseAuth.getCurrentUser() == null) {
+        if(mFirebaseAuth.getCurrentUser() == null) {
             Task<AuthResult> task = mFirebaseAuth.signInAnonymously();
             task.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     mDatabaseReference = mFirebaseDatabase.getReference("users");
                     FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                    Map<String, Boolean> cats = new HashMap<>();
+                    Map<String,Boolean> cats = new HashMap<>();
                     cats.put("world", false);
                     cats.put("business", false);
                     cats.put("technology", false);
-                    Users tldrUser = new Users("", user.getUid(), cats, 0, 10, 0);
+                    Users tldrUser = new Users("", user.getUid(),cats , 0, 10, 0);
                     mDatabaseReference.child(user.getUid()).setValue(tldrUser);
                 }
             });
@@ -95,15 +94,15 @@ public class ActivityHome extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
-                switch (item.getItemId()) {
+                switch (item.getItemId()){
                     case R.id.ic_explore:
                         Intent intent0 = new Intent(ActivityHome.this, ActivityExplore.class);
                         startActivity(intent0);
                         break;
 
                     case R.id.ic_home:
-                        // Intent intent1 = new Intent(ActivityHome.this, ActivityHome.class);
-                        // startActivity(intent1);
+                       // Intent intent1 = new Intent(ActivityHome.this, ActivityHome.class);
+                       // startActivity(intent1);
                         break;
 
                     case R.id.ic_user:
@@ -116,21 +115,21 @@ public class ActivityHome extends AppCompatActivity {
         });
     }
 
-    public void loadFeed(String url) {
+    public void loadFeed(String url){
         Parser parser = new Parser();
         parser.execute(url);
-        parser.onFinish(new Parser.OnTaskCompleted() {
+        parser.onFinish(new Parser.OnTaskCompleted(){
             @Override
             public void onTaskCompleted(ArrayList<Article> list) {
 
                 mDatabaseReference = mFirebaseDatabase.getReference("categories");
 
-                for (int i = 0; i < list.size(); i++) {
-                    String url = list.get(i).getLink().replaceAll("\\.", "");
-                    url = url.replaceAll("/", "");
+                for (int i = 0; i < list.size(); i++){
+                    String url = list.get(i).getLink().replaceAll("\\.","");
+                    url = url.replaceAll("/","");
 
                     mDatabaseReference.child(mCategory.getTitle()).child(url).setValue(list.get(i));
-                    if (list.get(i).getImage() == "") {
+                    if(list.get(i).getImage() == ""){
                         mDatabaseReference.child(mCategory.getTitle()).child(url).child("image").removeValue();
                     }
 
@@ -144,7 +143,6 @@ public class ActivityHome extends AppCompatActivity {
             }
         });
     }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -155,17 +153,58 @@ public class ActivityHome extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 yes = false;
-                if (dataSnapshot
+                if(dataSnapshot
                         .child("users")
                         .child(mFirebaseAuth.getCurrentUser().getUid())
                         .child("preferredCategories")
                         .child("technology").getValue().toString() == "true") {
-                    for (DataSnapshot postSnapshot : dataSnapshot.child("categories").child("technology").getChildren()) {
+                    for (final DataSnapshot postSnapshot : dataSnapshot.child("categories").child("technology").getChildren()) {
                         //Article article = new Article();
                         article = new Article();
                         article.setAuthor((String) postSnapshot.child("author").getValue());
                         article.setContent((String) postSnapshot.child("content").getValue());
-                        article.setDescription((String) postSnapshot.child("description").getValue());
+                        if(dataSnapshot.child("summaries")
+                                .child(postSnapshot.child("link")
+                                .getValue().toString().replaceAll("\\.", "").replaceAll("/", ""))
+                                .exists()) {
+
+                           Query def = mDatabaseReference.child("summaries")
+                                    .child(postSnapshot.child("link")
+                                            .getValue().toString().replaceAll("\\.", "").replaceAll("/", "")).limitToFirst(1);
+
+                            def.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    for(DataSnapshot snap: dataSnapshot.getChildren()){
+                                        Toast.makeText(context, snap.child("summary").child("content").getValue().toString(), Toast.LENGTH_LONG).show();
+                                        Toast.makeText(context, "it ran..", Toast.LENGTH_LONG).show();
+                                        setDescription(snap.child("summary").child("content").getValue().toString());
+
+
+                                        Toast.makeText(context, article.getDescription(), Toast.LENGTH_LONG).show();
+
+                                        if(article.getDescription() != "") {
+
+                                            addStuff();
+
+                                        }
+
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+
+                           // Toast.makeText(context, yes, Toast.LENGTH_LONG).show();
+                        } else {
+                            article.setDescription((String) postSnapshot.child("description").getValue());
+                            allArticles.add(article);
+                        }
+
+
                         article.setImage((String) postSnapshot.child("image").getValue());
                         article.setTitle((String) postSnapshot.child("title").getValue());
                         article.setLink((String) postSnapshot.child("link").getValue());
@@ -173,7 +212,7 @@ public class ActivityHome extends AppCompatActivity {
 
 
                     }
-                } else if (dataSnapshot.child("users")
+                } else if(dataSnapshot.child("users")
                         .child(mFirebaseAuth.getCurrentUser().getUid())
                         .child("preferredCategories")
                         .child("business").getValue().toString() == "true") {
@@ -189,7 +228,7 @@ public class ActivityHome extends AppCompatActivity {
                         article.setLink((String) postSnapshot.child("link").getValue());
                         allArticles.add(article);
                     }
-                } else if (dataSnapshot.child("users")
+                } else if(dataSnapshot.child("users")
                         .child(mFirebaseAuth.getCurrentUser().getUid())
                         .child("preferredCategories")
                         .child("world").getValue().toString() == "true") {
@@ -207,9 +246,7 @@ public class ActivityHome extends AppCompatActivity {
                     }
                 }
 
-                articleAdapter = new ArticleAdapter(allArticles, ActivityHome.this);
 
-                listview.setAdapter(articleAdapter);
 
 
             }
@@ -221,8 +258,15 @@ public class ActivityHome extends AppCompatActivity {
         });
     }
 
-    void setDescription(String s) {
+    void setDescription(String s){
+        article.setDescription(s);
+    }
 
+    void addStuff(){
+        Toast.makeText(this, "We just added the article", Toast.LENGTH_LONG).show();
+        articleAdapter = new ArticleAdapter(allArticles, ActivityHome.this);
+
+        listview.setAdapter(articleAdapter);
     }
 
 }
