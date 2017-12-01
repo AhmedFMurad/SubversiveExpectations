@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.prof.rssparser.Article;
 import com.squareup.picasso.Picasso;
@@ -27,6 +28,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
     ViewHolder viewHolder;
     Firebase mFirebase = new Firebase(mContext);
     public String url;
+    public boolean yes = false;
 
     private static class ViewHolder {
         TextView title;
@@ -115,6 +117,47 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
                 });
             }
         });
+        do {
+            Toast.makeText(mContext, "yes", Toast.LENGTH_LONG).show();
+            mFirebase.getDatabaseReference().addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot postSnapshot : dataSnapshot.child("categories").child("technology").getChildren()) {
+                        if (dataSnapshot.child("summaries")
+                                .child(postSnapshot.child("link")
+                                        .getValue().toString().replaceAll("\\.", "").replaceAll("/", ""))
+                                .exists()) {
+
+                            Query def = mFirebase.getDatabaseReference().child("summaries")
+                                    .child(postSnapshot.child("link")
+                                            .getValue().toString().replaceAll("\\.", "").replaceAll("/", "")).limitToFirst(1);
+
+                            def.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                                        viewHolder.content.setText(snap.child("summary").child("content").getValue().toString());
+                                        Toast.makeText(mContext, "ran", Toast.LENGTH_LONG).show();
+                                        yes = true;
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+                            // Toast.makeText(context, yes, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        } while (!yes);
         if (currArticle.getImage() != null) {
             Picasso.with(mContext).load(currArticle.getImage()).into(viewHolder.image);
         } else {
@@ -128,6 +171,8 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
                 mContext.startActivity(intent);
             }
         });
+
+
         return convertView;
     }
 
